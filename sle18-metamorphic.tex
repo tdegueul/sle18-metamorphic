@@ -93,7 +93,7 @@ As implementation techniques radically differ from one shape to the other, this 
 This lack of flexibility prevents the combination of the strengths of multiple technological spaces in the engineering of a single DSL.
 
 %
-In this paper, we report on early experiments building an incremental synchronization mechanism for metamorphic DSLs across technological spaces, named \emph{Prism}.
+In this paper, we report on early experiments building an incremental synchronization mechanism for metamorphic DSLs.
 Taking as example a simple finite-state machine language implemented in (i) Rascal, (ii) EMF, and (iii) as a fluent API in Java, we show how to synchronize incarnations of the same models in these different shapes, each belonging to a distinct technological space.
 
 %
@@ -139,7 +139,7 @@ The distinction between language vehicles is orthogonal to the distinction betwe
 %In addition, we consider a cohesive set of tools in a given TS (\eg~a particular language workbench) as a separate TS.
 For instance, following this definition, we view Rascal and Spoofax as two distinct language vehicles within the broader TS of grammarware and meta-programming, and EMF and UML (through Profiles) as two distinct language vehicles within the broader TS of modelware.
 LVs usually come with their own meta-languages for expressing the various aspects of a DSL:~abstract syntax, concrete syntax, static and execution semantics, \etc.
-Examples of prominent LV include meta-modeling environments such as EMF~\cite{steinberg2008emf}, meta-programming environments such as Rascal~\cite{klint2010easy} and Spoofax~\cite{kats2010spoofax}, \todo{Doesn't really make sense}{projectional environments} such as MPS~\cite{voelter2013language}, plain old programming languages such as Racket~\cite{felleisen2018programmable} or Scala~\cite{hofer2010modular}, and language workbenches (LWBs) in general~\cite{erdweg2015evaluating}.
+Examples of prominent LV include meta-modeling environments such as EMF~\cite{steinberg2008emf}, meta-programming environments such as Rascal~\cite{klint2010easy} and Spoofax~\cite{kats2010spoofax}, projectional environments \td{Doesn't really make sense} such as MPS~\cite{voelter2013language}, plain old programming languages such as Racket~\cite{felleisen2018programmable} or Scala~\cite{hofer2010modular}, and language workbenches (LWBs) in general~\cite{erdweg2015evaluating}.
 As implementation techniques radically differ from one LV to the other, this initial design choice commits the development of a DSL in a set direction that can hardly be reconsidered later on.
 
 From a language designer's point of view, however, every TS comes with its unique strengths.
@@ -287,7 +287,7 @@ class Transition {
 \end{minipage}
 
 \section{Discussion \& Next Steps}
-\td{If we write a vision paper, there must be a vision or something. Next steps? Roadmap? Challenges?}
+\td{If we write a vision paper, there must be a vision. Next steps? Roadmap? Challenges? What should the reader gain from reading this paper?}
 \begin{itemize}
 	\item Our approach goes beyond what is described here. \eg synchronizing an outline view, a debugger, live modeling, w/e; also, we are AS-centric, but one could imagine something radically different;
 	\item We don’t care how the list of changes is obtained. Diff is \emph{a} way to get there (as in the Rascal implementation), but obtaining the list of changes through other means (e.g., a transaction on a tree editor in EMF) is just as valid;
