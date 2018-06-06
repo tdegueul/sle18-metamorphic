@@ -198,12 +198,24 @@ So it should be possible to apply the patch while maintaining the extra informat
 
 Automatically generating language implementations in different TS is beyond the scope of this paper.\footnote{Indeed, this would actually require to build some kind of BX between all AS formalisms; so, nope!} Instead, given various shapes of a language, implemented by hand, we provide the means to automatically synchronize the projections of a model.
 
-%\begin{figure}
-%	\centering
-%	\includegraphics[width=.7\columnwidth]{figures/concepts}
-%	\caption{Concepts \& Vocabulary}
-%	\label{fig:concepts}
-%\end{figure}
+\begin{lstlisting}[label=lst:delta-adt, caption={CRUD-like \ds structure definition in Rascal}, language=Rascal]
+@doc{A patch consists of a new root and a sequences of edits}
+alias Patch
+  = tuple[Id root, Edits edits];
+
+@doc{Edits are operations attached to object identities}
+alias Edits
+  = lrel[Id obj, Edit edit];
+
+data Edit
+  = put(str field, value val)
+  | unset(str field)
+  | ins(str field, int pos, value val)
+  | del(str field, int pos)
+  | create(str class) 
+  | destroy() 
+;
+\end{lstlisting}
 
 It is important to note that ``projections'' have no relation whatsoever with projectional editing.
 A projection denotes the incarnation of a model in a particular shape of a language.
@@ -230,10 +242,47 @@ Metamorphic synchronization refers to the ability to synchronize the projections
 \end{figure}
 
 \subsection{Rascal}
+\begin{minipage}{\columnwidth}
+\begin{lstlisting}[label=lst:fsm-adt, caption={FSM in Rascal}, language=Rascal]
+data Machine(Id uid = noId(), loc pkgURI = |http://www.example.org/myfsm|)
+  = Machine(str name, list[State] states, Ref[State] initial = null());
+
+data State(Id uid = noId())
+  = State(str name, list[Trans] transitions);
+
+data Trans(Id uid = noId())
+  = Trans(str event, Ref[State] target);
+\end{lstlisting}
+\end{minipage}
 
 \subsection{Ecore}
+\begin{figure}
+	\includegraphics[width=4cm]{figures/fsm-ecore.pdf}
+	\caption{Fsm in EMF---Replace with MM syntax}
+	\label{fig:fsmEcore}
+\end{figure}
 
 \subsection{Java}
+\begin{minipage}{\columnwidth}
+\begin{lstlisting}[label=lst:fsm-api, caption={FSM in Fluent API}, language=Java]
+class Fsm {
+  Fsm(String name);
+  State initial(String name);
+  State state(String name);
+  Fsm end();
+}
+class State {
+  State state(String name);
+  Transition target(String stateName);
+  Fsm end();
+}
+class Transition {
+  Transition target(String stateName);
+  State on(String event);
+  Fsm end();
+}
+\end{lstlisting}
+\end{minipage}
 
 \section{Discussion \& Next Steps}
 
