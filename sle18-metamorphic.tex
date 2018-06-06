@@ -15,6 +15,7 @@
 \usepackage{balance}
 \usepackage{todonotes}
 \usepackage[all]{nowidow}
+\usepackage{tikz}
 \usepackage[scaled]{beramono}
 \usepackage{booktabs}
 %\usepackage[bookmarks=false,colorlinks=true,allcolors=black,breaklinks]{hyperref}
@@ -55,6 +56,9 @@
 }
 
 \input{commands}
+
+\newboolean{CommentON}
+\setboolean{CommentON}{true} % to disable the comments set CommentON to false in the main doc
 
 \begin{document}
 \title{Incremental Synchronization of Metamorphic DSLs}
@@ -166,6 +170,7 @@ We investigate this question in the next section.
 \end{figure}
 
 \section{Incremental Synchronization of Metamorphic DSLs}
+\td{\emph{Our} simple impl., \emph{our} patch formalism, \emph{our} dispatch, \etc}
 The cornerstone artifact defining a DSL in any TS is its abstract syntax.
 The way abstract syntax is expressed differs drastically from one LWB to another: Xtext\footnote{\url{https://www.eclipse.org/Xtext/}} and GEMOC~\cite{bousse2016execution} use Ecore metamodels~\cite{steinberg2008emf}; Spoofax~\cite{kats2010spoofax} uses SDF grammars~\cite{heering1989syntax}; MPS\footnote{\url{https://www.jetbrains.com/mps/}} uses \emph{concepts}; Rascal~\cite{klint2010easy} uses Algebraic Data Types (ADT); \etc.
 Language embedding techniques, on the other hand, use the constructs of an host language to materialize the abstractions of a DSL in the host language itself.
@@ -199,13 +204,11 @@ So it should be possible to apply the patch while maintaining the extra informat
 Automatically generating language implementations in different TS is beyond the scope of this paper.\footnote{Indeed, this would actually require to build some kind of BX between all AS formalisms; so, nope!} Instead, given various shapes of a language, implemented by hand, we provide the means to automatically synchronize the projections of a model.
 
 \begin{lstlisting}[label=lst:delta-adt, caption={CRUD-like \ds structure definition in Rascal}, language=Rascal]
-@doc{A patch consists of a new root and a sequences of edits}
-alias Patch
-  = tuple[Id root, Edits edits];
+@doc{A patch consists of a sequence of edits}
+alias Patch = tuple[Id root, Edits edits];
 
 @doc{Edits are operations attached to object identities}
-alias Edits
-  = lrel[Id obj, Edit edit];
+alias Edits = lrel[Id obj, Edit edit];
 
 data Edit
   = put(str field, value val)
@@ -213,8 +216,7 @@ data Edit
   | ins(str field, int pos, value val)
   | del(str field, int pos)
   | create(str class) 
-  | destroy() 
-;
+  | destroy();
 \end{lstlisting}
 
 It is important to note that ``projections'' have no relation whatsoever with projectional editing.
@@ -285,7 +287,7 @@ class Transition {
 \end{minipage}
 
 \section{Discussion \& Next Steps}
-
+\td{If we write a vision paper, there must be a vision or something. Next steps? Roadmap? Challenges?}
 \begin{itemize}
 	\item Our approach goes beyond what is described here. \eg synchronizing an outline view, a debugger, live modeling, w/e; also, we are AS-centric, but one could imagine something radically different;
 	\item We don’t care how the list of changes is obtained. Diff is \emph{a} way to get there (as in the Rascal implementation), but obtaining the list of changes through other means (e.g., a transaction on a tree editor in EMF) is just as valid;

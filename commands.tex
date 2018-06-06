@@ -54,3 +54,22 @@
 	morecomment=[l]{\@},
 	morekeywords={alias, tuple, lrel, data, str, value, int}
 }
+
+\usetikzlibrary{shapes.callouts, shadows}
+\tikzset{author comment/.style={draw, fill=white, thick, drop shadow}}
+
+\newcommand{\Comment}[3]{%
+	\ifthenelse{\boolean{CommentON}}{%
+		\raisebox{-.5ex}
+		{\tikz
+			\node[x=1ex, y=1ex, inner sep=.5ex,
+			rectangle callout,
+			callout pointer width=.7ex,
+			callout relative pointer={(1.5,-0)},
+			author comment]
+			{\footnotesize\textsf{#1}};}~%
+		\textsf{[}\,\textcolor{#2}{#3}\,\textsf{]}\xspace
+	}{} %else
+}
+
+\newcommand{\td}[1]{\Comment{TD}{blue}{#1}}
