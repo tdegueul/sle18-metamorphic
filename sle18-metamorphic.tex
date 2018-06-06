@@ -58,8 +58,8 @@
 
 \begin{document}
 \title{Incremental Synchronization of Metamorphic DSLs}
-%\titlenote{Models are synchonized, not DSLs, though}
-\subtitle{Well technically, models are synchronized, not DSLs\dots}
+\titlenote{Models are synchonized, not DSLs, though}
+\subtitle{Language engineering across technological spaces}
 %\subtitlenote{The full version of the author's guide is available as
 %		\texttt{acmart.pdf} document}
 
@@ -205,13 +205,6 @@ Automatically generating language implementations in different TS is beyond the 
 %	\label{fig:concepts}
 %\end{figure}
 
-\begin{figure}
-	\centering
-	\includegraphics[width=\columnwidth]{figures/concepts-instantiated}
-	\caption{\dots}
-	\label{fig:concepts-instantiated}
-\end{figure}
-
 It is important to note that ``projections'' have no relation whatsoever with projectional editing.
 A projection denotes the incarnation of a model in a particular shape of a language.
 In \Cref{fig:motivating-fsm}, the lower part depicts three projections of the same \texttt{Button} state machine model in three shapes of the FSM language.
@@ -220,16 +213,39 @@ A concrete implementation of a language is a ``shape''.
 An instance of a shape, \ie~a particular model in a particular TS, is a ``projection'' of a ``virtual'' model.
 Metamorphic synchronization refers to the ability to synchronize the projections of a given model for every shapes of a language.
 
-\section{A Prototype Implementation:~Prism}
+\begin{figure}
+	\centering
+	\includegraphics[width=.6\columnwidth]{figures/prism}
+	\caption{\dots}
+	\label{fig:prism}
+\end{figure}
+
+\section{Shapes of an FSM Language}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\columnwidth]{figures/concepts-instantiated}
+	\caption{\dots}
+	\label{fig:concepts-instantiated}
+\end{figure}
+
+\subsection{Rascal}
+
+\subsection{Ecore}
+
+\subsection{Java}
 
 \section{Discussion \& Next Steps}
 
 \begin{itemize}
 	\item Our approach goes beyond what is described here. \eg synchronizing an outline view, a debugger, live modeling, w/e; also, we are AS-centric, but one could imagine something radically different;
 	\item We don’t care how the list of changes is obtained. Diff is \emph{a} way to get there (as in the Rascal implementation), but obtaining the list of changes through other means (e.g., a transaction on a tree editor in EMF) is just as valid;
-	\item Our dispatch is braindead. A better dispatch may enable collaborative editing, distributed synchronization, \etc
+	\item Our dispatch is braindead. A better dispatch may enable collaborative editing, distributed synchronization, \etc;
+	\item It may or may not be possible to automatically generate a shape from another. \eg~we did it for Ecore $\leftrightarrow$ Rascal.
 \end{itemize}
 
+\clearpage
+\balance
 \bibliographystyle{ACM-Reference-Format}
 \bibliography{main}
 
