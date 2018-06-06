@@ -1,0 +1,56 @@
+% Usual suspects
+\newcommand*{\ie}{i.e.,\@\xspace}
+\newcommand*{\eg}{e.g.,\@\xspace}
+\newcommand*{\cf}{cf.\@\xspace}
+
+\makeatletter
+\newcommand*{\etc}{%
+	\@ifnextchar{.}%
+	{etc}%
+	{etc.\@\xspace}%
+}
+\makeatother
+
+\newcommand*{\de}{$\Delta$\@\xspace}
+\newcommand*{\ds}{$\Delta$s\@\xspace}
+\newcommand*{\db}{$\Delta$-based\@\xspace}
+\newcommand*{\M}{\mathcal{M}}
+
+\newcommand*{\diff}{\textit{diff}\@\xspace}
+\newcommand*{\patch}{\textit{patch}\@\xspace}
+\newcommand*{\prism}{\textit{Prism}\@\xspace}
+
+% Listings
+\definecolor{keywordscolor}{RGB}{127, 0, 85}
+\definecolor{stringcolors}{RGB}{42, 0, 255}
+\definecolor{commentscolor}{RGB}{63, 127, 95}
+\definecolor{annotationscolor}{RGB}{100, 100, 100}
+\definecolor{lstbgcolor}{RGB}{245, 245, 245}
+
+% Custom Java
+\lstset{
+	language=Java,
+	%	mathescape=true,
+	literate={->}{$\rightarrow$}{1},
+	keywordstyle=\color{keywordscolor}\bfseries,
+	commentstyle=\color{commentscolor},
+	stringstyle=\color{stringcolors},
+	basicstyle=\ttfamily\scriptsize,
+	captionpos=b,
+	numbers=left,
+	%	backgroundcolor=\color{lstbgcolor},
+	%	framexleftmargin=20pt,
+	xleftmargin=17pt,
+	aboveskip=\bigskipamount,
+	belowskip=\bigskipamount,
+	%	frame=tb,
+	tabsize=2,
+	breaklines=true
+}
+
+% Rascal
+\lstdefinelanguage[]{Rascal}[]{Java}
+{
+	morecomment=[l]{\@},
+	morekeywords={alias, tuple, lrel, data, str, value, int}
+}
