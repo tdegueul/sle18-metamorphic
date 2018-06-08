@@ -1,0 +1,25 @@
+\begin{abstract}
+%
+Domain-Specific Languages (DSLs) manifest themselves in remarkably diverse \emph{shapes}:~from internal DSL embedded as a mere fluent API within a programming language to external DSLs with dedicated syntax and tool support engineered using one of many language workbenches.
+
+%
+Theoretically, this diversity should enable language designers to combine the strengths of multiple language engineering technologies in the development of a single DSL, and enable language users to manipulate their abstractions in the most appropriate shape for the task at hand (\eg~domain modeling vs. system integration).
+
+%
+In practice, however, combining multiple language implementation techniques is problematic.
+Language designers usually commit to a particular technology (\eg~Spoofax, EMF, Racket) and a particular shape (\eg~internal, external, API) early in the language design process and this choice can hardly be reconsidered later on.
+
+%
+In this vision paper, we report on early experiments and lessons learned building an incremental synchronization mechanism for \emph{metamorphic DSLs}.
+Metamorphic DSLs are languages whose different constituents (syntax, semantics, tools) can be defined independently using various language engineering technologies and which can adapt their shape to a particular user or task.
+Taking as example a simple metamorphic FSM language implemented simultaneously in three technological spaces (Rascal, EMF, a fluent API in Java), we show how the same FSM models can be manipulated indifferently under various shapes (a textual program in Rascal, a graphical projection in EMF, a Java AST).
+This opens up the possibility to, \eg animate an FSM model in EMF while it is executed by an interpreter written in Rascal.
+
+%
+%Our approach relies on a communication bus that ships changes on a model (\emph{patches}) from one shape to the others.
+%This opens up the possibility to, \eg, animate an FSM model in EMF while it is executed by an interpreter written in Rascal.
+%Our approach caters for specificities of said technological spaces by allowing every shape to maintain extra shape-specific state (\eg~layout information in textual and graphical editors, runtime state).
+
+%
+We intend to raise the awareness of the community on the notion of metamorphic DSL, identify some of the challenges we encountered along the way and, hopefully, encourage future investigations.
+\end{abstract}
