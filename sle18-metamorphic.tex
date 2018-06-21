@@ -237,12 +237,26 @@ data Trans(Id uid = noId())
 \end{lstlisting}
 \end{minipage}
 
+The FSM is defined with Abstract Data Types.
+Each concept of the FSM has a unique identifier.
+Rascal is a tree based language and thus has no concept for references.
+We defined a Abstract Data Type Ref that can be instanciated in a value containing an identifier and therefore emulate a reference.
+
 \subsection{Ecore}
 \begin{figure}
 	\includegraphics[width=4cm]{figures/fsm-ecore.pdf}
 	\caption{Fsm in EMF---Replace with MM syntax}
 	\label{fig:fsmEcore}
 \end{figure}
+
+The FSM is defined as an Ecore
+Metamodel containing three EClasses representing the main con-
+cepts. We define Machine as the root container EClass. It has an
+EAttribute ’name’, a containment EReference ’states’ typed State
+and a simple EReference ’initial’ typed State. The EClass State has
+an EAttribute ’name’ and a containment EReference ’transitions’
+typed Trans. The EClass Trans has an EAttibutte ’event’ and a
+simple EReference ’target’ typed State.
 
 \subsection{Java}
 \begin{minipage}{\columnwidth}
@@ -265,6 +279,16 @@ class Transition {
 }
 \end{lstlisting}
 \end{minipage}
+
+An API is fluent if it can be used in a way that looks like a programe.
+The FSM is represented as a sequence of method invocation.
+The references are represented by argument of type String that allows the user to reference a State by its name.
+
+As a fluent API is an embeded language, we need a mechanism to identified which range of a file is representing an FSM model.
+
+A source of divergence with other Shapes of FSM is the encoding of the initial State.
+We choose to represent a State by the method state() or by the method initial().
+As the initial State is unique, we enforce its declaration as the first method invocation in the FSM. This solution solve the uniqueness but enforce the first state to be initial that it can be a source of divergence if models in other shape have a reference designating the initial state that is not in the first position. (if the order of State is part of the State Identifier)
 
 \section{Discussion \& Next Steps}
 \td{If we write a vision paper, there must be a vision. Next steps? Roadmap? Challenges? What should the reader gain from reading this paper?}
