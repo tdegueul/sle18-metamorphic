@@ -310,6 +310,8 @@ As the initial State is unique, we enforce its declaration as the first method i
 	\item We don’t care how the list of changes is obtained. Diff is \emph{a} way to get there (as in the Rascal implementation), but obtaining the list of changes through other means (e.g., a transaction on a tree editor in EMF) is just as valid;
 	\item Our dispatch is braindead. A better dispatch may enable collaborative editing, distributed synchronization, \etc;
 	\item It may or may not be possible to automatically generate a shape from another. \eg~we did it for Ecore $\leftrightarrow$ Rascal;
+	\item Transforming context-heavy Java ASTs is challenging; our tool is stupid in that respect; DIY;
+	\item We do not really know if our patch formalism is sufficient; what if you want to plug another formalism; is there anything missing?
 	\item \cite{lammel2005mappings}
 \end{itemize}
 
