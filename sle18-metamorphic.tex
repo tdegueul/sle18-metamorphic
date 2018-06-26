@@ -216,8 +216,6 @@ Metamorphic synchronization refers to the ability to synchronize the projections
 
 \section{Shapes of an FSM Language}
 
-We synchronized different editors for the FSM language editors.
-
 \begin{figure}
 	\centering
 	\includegraphics[width=\columnwidth]{figures/concepts-instantiated}
@@ -225,8 +223,8 @@ We synchronized different editors for the FSM language editors.
 	\label{fig:concepts-instantiated}
 \end{figure}
 
-\subsection{Rascal}
-\begin{minipage}{\columnwidth}
+\begin{figure*}[ht]
+\begin{minipage}[b]{0.3\textwidth}
 \begin{lstlisting}[label=lst:fsm-adt, caption={FSM in Rascal}, language=Rascal]
 data Machine(Id uid = noId(), loc pkgURI = |http://www.example.org/myfsm|)
   = Machine(str name, list[State] states, Ref[State] initial = null());
@@ -238,29 +236,11 @@ data Trans(Id uid = noId())
   = Trans(str event, Ref[State] target);
 \end{lstlisting}
 \end{minipage}
-
-The FSM language is defined in Rascal by the ADTs Machine, State and Trans.
-A Machine has a name, contains a list of States and has a reference to an initial State.
-States have a name and contains a list of Trans.
-Trans is triggering an event and has a reference to an outgoing State.
-The instantiation of any of theses types produce ADT values containing a unique identifier.
-The containment references between ADT values are realised by lists of ADT values. But Rascal is a tree based language and there is no built in concept for simple reference.
-The ADT Ref emulate this concept by containing an identifier equal to an identifier from an existing Machine,State or Trans.
-
-\subsection{Ecore}
-\begin{figure}
-	\includegraphics[width=4cm]{figures/fsm-ecore.pdf}
-	\caption{Fsm in EMF---Replace with MM syntax}
-	\label{fig:fsmEcore}
-\end{figure}
-
-The same FSM language is defined by an Ecore metamodel containing the EClasses Machine, State and Trans.
-Machine is the root container. It has an EAttribute ’name’, a containment EReference ’states’ typed State and a simple EReference ’initial’ typed State.
-The EClass State has an EAttribute ’name’ and a containment EReference ’transitions’ typed Trans.
-The EClass Trans has an EAttibutte ’event’ and a simple EReference ’target’ typed State.
-
-\subsection{Java}
-\begin{minipage}{\columnwidth}
+\begin{minipage}[b]{0.3\textwidth}
+\includegraphics[width=\textwidth]{figures/fsm-ecore.pdf}
+\caption{FSM in Ecore}
+\end{minipage}
+\begin{minipage}[b]{0.3\textwidth}
 \begin{lstlisting}[label=lst:fsm-api, caption={FSM in Fluent API}, language=Java]
 class Fsm {
   Fsm(String name);
@@ -278,8 +258,28 @@ class Transition {
   State on(String event);
   Fsm end();
 }
-\end{lstlisting}
+%\end{lstlisting}
 \end{minipage}
+\end{figure*}
+
+\subsection{Rascal}
+
+The FSM language is defined in Rascal by the ADTs Machine, State and Trans.
+A Machine has a name, contains a list of States and has a reference to an initial State.
+States have a name and contains a list of Trans.
+Trans is triggering an event and has a reference to an outgoing State.
+The instantiation of any of theses types produce ADT values containing a unique identifier.
+The containment references between ADT values are realised by lists of ADT values. But Rascal is a tree based language and there is no built in concept for simple reference.
+The ADT Ref emulate this concept by containing an identifier equal to an identifier from an existing Machine,State or Trans.
+
+\subsection{Ecore}
+
+The same FSM language is defined by an Ecore metamodel containing the EClasses Machine, State and Trans.
+Machine is the root container. It has an EAttribute ’name’, a containment EReference ’states’ typed State and a simple EReference ’initial’ typed State.
+The EClass State has an EAttribute ’name’ and a containment EReference ’transitions’ typed Trans.
+The EClass Trans has an EAttibutte ’event’ and a simple EReference ’target’ typed State.
+
+\subsection{Java}
 
 Another definition of the FSM language is done by a fluent Java API.
 This shape allows to embed an Fsm model in a Java program by an expression starting with "new Fsm()" and ending with ".end()".
