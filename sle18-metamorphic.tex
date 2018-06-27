@@ -21,6 +21,8 @@
 %\usepackage[bookmarks=false,colorlinks=true,allcolors=black,breaklinks]{hyperref}
 \usepackage{cleveref} % Keep me last so that I can
                       % reset other counters
+                      
+\newtheorem{definition}{Definition}
 
 % Copyright
 %\setcopyright{none}
@@ -213,6 +215,31 @@ Metamorphic synchronization refers to the ability to synchronize the projections
 	\caption{\dots}
 	\label{fig:prism}
 \end{figure}
+
+\begin{definition}
+A Technological Space is a collection of tools and an environment defining a coherent space where users can design and use Languages.
+\end{definition}
+
+\begin{definition}
+A projection of model is a relation between a conceptual model and its different incarnations in the Technological Spaces.
+All of theses incarnations represent the same model but in different formalisms and technologies.
+They are two necessary properties to have a model projection.
+\begin{itemize}
+	\item incarnations have to be in an equivalent states.
+	\item incarnations have to be synchronized, i.e., any change on an incarnation is a change on the conceptual model and thus other incarnations have to apply the same change.
+\end{itemize}
+\end{definition}
+
+\begin{definition}
+The equivalence between the state of different incarnations is defined thanks to a Diff operation.
+The Diff operation compare two States and output a description of the changes between them.
+Two incarnations are in equivalent state if the Diff between a state and an empty state is equal for both incarnation.
+Moreover for any change operation applicable to an incarnation, the two incarnations have to be in an equivalent state after the change.
+\end{definition}
+
+\begin{definition}
+An incarnation is in the context of a model projection what is representing the model in a given Technological Space.
+\end{definition}
 
 \section{Shapes of an FSM Language}
 
