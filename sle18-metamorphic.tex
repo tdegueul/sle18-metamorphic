@@ -68,17 +68,35 @@
 %\subtitlenote{The full version of the author's guide is available as
 %		\texttt{acmart.pdf} document}
 
-\author{ALE}
-%\authornote{Dr.~Trovato insisted his name be first.}
-%\orcid{1234-5678-9012}
-\affiliation{%
-	\institution{ALE}
-%	\streetaddress{P.O. Box 1212}
-%	\city{Dublin}
-%	\state{Ohio}
-%	\postcode{43017-6221}
+\author{Fabien Coulon}
+\affiliation{
+	\institution{Université Toulouse-Jean-Jaurès / Obeo}
+	\country{France}
 }
-\email{ale@ale.org}
+\email{fabien.coulon@irit.fr}
+
+\author{Benoit Combemale}
+\affiliation{
+	\institution{Université Toulouse-Jean-Jaurès}
+	\country{France}
+}
+\email{benoit.combemale@irit.fr}
+
+\author{Thomas Degueule}
+\affiliation{
+	\institution{CWI}
+	\city{Amsterdam}
+	\country{Netherlands}
+}
+\email{degueule@cwi.nl}
+
+\author{Tijs van der Storm}
+\affiliation{
+	\institution{CWI \& U of Groningen}
+	\city{Amsterdam}
+	\country{Netherlands}
+}
+\email{storm@cwi.nl}
 
 % The default list of authors is too long for headers.
 %\renewcommand{\shortauthors}{B. Trovato et al.}
@@ -116,7 +134,7 @@
 One of the first steps in designing a new DSL is to choose the \emph{language vehicle} within which it will be engineered.
 We define a language vehicle (LV) as the technological means for implementing a language.
 %A language vehicle may pertain to any \emph{technological space} (TS) such as grammarware, modelware, PLware, \etc.
-The distinction between language vehicles is orthogonal to the distinction between \emph{technological spaces} (\eg~grammarware, modelware, PLware);\footnote{In this paper, we build upon \citeauthor{kurtev2002technological}'s view of a TS:~``a working context with a set of associated concepts, body of knowledge, tools, required skills, and possibilities''~\cite{kurtev2002technological}} the distinction between graphical and textual syntaxes; the distinction between internal, embedded, and external DSLs, \etc.
+The distinction between language vehicles is orthogonal to the distinction between \emph{technological spaces} (\eg~grammarware, modelware, PLware);\footnote{In this paper, we build upon \citeauthor{kurtev2002technological}'s view of a TS:~``a working context with a set of associated concepts, body of knowledge, tools, required skills, and possibilities''~\cite{kurtev2002technological}.} the distinction between graphical and textual syntaxes; the distinction between internal, embedded, and external DSLs, \etc.
 %In addition, we consider a cohesive set of tools in a given TS (\eg~a particular language workbench) as a separate TS.
 For instance, following this definition, we view Rascal and Spoofax as two distinct language vehicles within the broader TS of grammarware and meta-programming, and EMF and UML (through Profiles) as two distinct language vehicles within the broader TS of modelware.
 LVs usually come with their own meta-languages for expressing the various aspects of a DSL:~abstract syntax, concrete syntax, static and execution semantics, \etc.
@@ -145,8 +163,8 @@ We investigate this question in the next section.
 
 \begin{figure}
 	\centering
-	\includegraphics[width=\columnwidth]{figures/motivating-fsm}
-	\caption{Shapes of an FSM language}
+	\includegraphics[width=\columnwidth]{figures/motivating-fsm-simplified}
+	\caption{Three incarnations of an FSM model}
 	\label{fig:motivating-fsm}
 \end{figure}
 
