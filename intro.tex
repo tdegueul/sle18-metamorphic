@@ -23,7 +23,7 @@ As depicted in \Cref{fig:motivating-fsm}, one would like to combine the strength
 Rascal could be used to develop its interpreter, a set of refactoring tools (\eg~state collapsing and minimization), and a textual editor; EMF to develop a graphical editor and animator of running FSM models; Java to offer a fluent API for advanced users who focus on its integration with other DSLs or within a broader system.
 
 Using today's techniques, it is possible to define the same FSM language with the aforementioned tools in these three LV.
-There is currently no way, however, to apply the tools of a given TS on the models created in another TS---for instance, animating a FSM model written in EMF using the Rascal interpreter, or synchronizing a textual FSM model in Rascal with its equivalent incarnation in the form of a Java AST.
+There is currently no way, however, to apply the tools of a given LV on the models created in another LV---for instance, animating a FSM model written in EMF using the Rascal interpreter, or synchronizing a textual FSM model in Rascal with its equivalent incarnation in the form of a Java AST.
 Achieving this goal requires to synchronize the diverse in-memory representations of the same model in different LV; for instance to allow the Rascal interpreter to update its in-memory representation of an FSM model and synchronize it with the in-memory representation of the same model in EMF.
 
 In this paper, we envision a language engineering activity where language designers combine tools from multiple vehicles to engineer a single DSL.

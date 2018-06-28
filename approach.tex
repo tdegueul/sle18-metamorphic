@@ -1,6 +1,6 @@
 \section{Incremental Synchronization of Metamorphic DSLs}
-\td{\emph{Our} simple impl., \emph{our} patch formalism, \emph{our} dispatch, \etc}
-The cornerstone artifact defining a DSL in any TS is its abstract syntax.
+%\td{\emph{Our} simple impl., \emph{our} patch formalism, \emph{our} dispatch, \etc}
+The cornerstone artifact defining a DSL in any LV is its abstract syntax \td{Can we legitimately say that for Java?}.
 The way abstract syntax is expressed differs drastically from one LWB to another: Xtext\footnote{\url{https://www.eclipse.org/Xtext/}} and GEMOC~\cite{bousse2016execution} use Ecore metamodels~\cite{steinberg2008emf}; Spoofax~\cite{kats2010spoofax} uses SDF grammars~\cite{heering1989syntax}; MPS\footnote{\url{https://www.jetbrains.com/mps/}} uses \emph{concepts}; Rascal~\cite{klint2010easy} uses Algebraic Data Types (ADT); \etc.
 Language embedding techniques, on the other hand, use the constructs of an host language to materialize the abstractions of a DSL in the host language itself.
 In all models, concrete models are then built as instances of the corresponding abstract syntax formalism:~Ecore models, ADT values, Java constructs, \etc.
