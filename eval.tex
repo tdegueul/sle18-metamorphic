@@ -9,7 +9,7 @@
 
 \begin{figure}[bt]
 	\centering
-	\begin{subfigure}[b]{.32\columnwidth}
+	\begin{subfigure}[b]{.33\columnwidth}
 		\begin{lstlisting}[label=lst:fsm-adt, language=Rascal, numbers=none, xleftmargin=0pt, tabsize=1]
 data Machine(Id uid) =
 	Machine(str name,
@@ -26,29 +26,29 @@ data Trans(Id uid) =
 		\end{lstlisting}
 		\caption{Rascal ADT}
 	\end{subfigure}
-	\quad
-	\begin{subfigure}[b]{.25\columnwidth}
+	\hfill
+	\begin{subfigure}[b]{.28\columnwidth}
 		\includegraphics[width=\textwidth]{figures/fsm-mm}
 		\caption{Ecore MM}
 	\end{subfigure}
-	\quad
-	\begin{subfigure}[b]{.32\columnwidth}
+	\enskip
+	\begin{subfigure}[b]{.35\columnwidth}
 		\begin{lstlisting}[label=lst:fsm-api, language=Java, numbers=none, xleftmargin=0pt, tabsize=1]
 class Fsm {
-	Fsm(Str name);
-	State init(Str name);
-	State state(Str name);
-	Fsm   end();
+	Fsm(String name);
+	State init(String name);
+	State state(String name);
+	Fsm end();
 }
 class State {
-	State state(Str name);
-	Trans tgt(Str name);
-	Fsm   end();
+	State state(String name);
+	Trans tgt(String name);
+	Fsm end();
 }
 class Trans {
-	Trans tgt(Str name);
-	State on(Str event);
-	Fsm   end();
+	Trans tgt(String name);
+	State on(String event);
+	Fsm end();
 }
 		\end{lstlisting}
 		\caption{Java API}
