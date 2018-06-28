@@ -9,29 +9,31 @@
 
 \begin{figure}[bt]
 	\centering
-	\begin{subfigure}[b]{.33\columnwidth}
+	\begin{subfigure}[b]{.3\columnwidth}
 		\begin{lstlisting}[label=lst:fsm-adt, language=Rascal, numbers=none, xleftmargin=0pt, tabsize=1]
 data Machine(Id uid) =
 	Machine(str name,
 		list[State] states,
 		Ref[State] initial);
-		
+
 data State(Id uid) =
 	State(str name,
 		list[Trans] trans);
-		
+
 data Trans(Id uid) =
 	Trans(str event,
 		Ref[State] target);
 		\end{lstlisting}
 		\caption{Rascal ADT}
 	\end{subfigure}
-	\hfill
+	\vrule
+	\enskip
 	\begin{subfigure}[b]{.28\columnwidth}
 		\includegraphics[width=\textwidth]{figures/fsm-mm}
 		\caption{Ecore MM}
 	\end{subfigure}
 	\enskip
+	\vrule
 	\begin{subfigure}[b]{.35\columnwidth}
 		\begin{lstlisting}[label=lst:fsm-api, language=Java, numbers=none, xleftmargin=0pt, tabsize=1]
 class Fsm {
