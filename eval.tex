@@ -1,50 +1,60 @@
 \section{Shapes of an FSM Language}
 
-\begin{figure}
+%\begin{figure}
+%	\centering
+%	\includegraphics[width=\columnwidth]{figures/concepts-instantiated}
+%	\caption{\dots}
+%	\label{fig:concepts-instantiated}
+%\end{figure}
+
+\begin{figure}[bt]
 	\centering
-	\includegraphics[width=\columnwidth]{figures/concepts-instantiated}
-	\caption{\dots}
-	\label{fig:concepts-instantiated}
-\end{figure}
-
-\begin{figure*}[ht]
-\begin{minipage}[b]{0.3\textwidth}
-\begin{lstlisting}[label=lst:fsm-adt, caption={FSM in Rascal}, language=Rascal]
-data Machine(Id uid = noId(), loc pkgURI = |http://www.example.org/myfsm|)
-  = Machine(str name, list[State] states, Ref[State] initial = null());
-
-data State(Id uid = noId())
-  = State(str name, list[Trans] transitions);
-
-data Trans(Id uid = noId())
-  = Trans(str event, Ref[State] target);
-\end{lstlisting}
-\end{minipage}
-\begin{minipage}[b]{0.3\textwidth}
-\includegraphics[width=\textwidth]{figures/fsm-ecore.pdf}
-\caption{FSM in Ecore}
-\end{minipage}
-\begin{minipage}[b]{0.3\textwidth}
-\begin{lstlisting}[label=lst:fsm-api, caption={FSM in Fluent API}, language=Java]
+	\begin{subfigure}[b]{.32\columnwidth}
+		\begin{lstlisting}[label=lst:fsm-adt, language=Rascal, numbers=none, xleftmargin=0pt, tabsize=1]
+data Machine(Id uid) =
+	Machine(str name,
+		list[State] states,
+		Ref[State] initial);
+		
+data State(Id uid) =
+	State(str name,
+		list[Trans] trans);
+		
+data Trans(Id uid) =
+	Trans(str event,
+		Ref[State] target);
+		\end{lstlisting}
+		\caption{Rascal ADT}
+	\end{subfigure}
+	\quad
+	\begin{subfigure}[b]{.25\columnwidth}
+		\includegraphics[width=\textwidth]{figures/fsm-mm}
+		\caption{Ecore MM}
+	\end{subfigure}
+	\quad
+	\begin{subfigure}[b]{.32\columnwidth}
+		\begin{lstlisting}[label=lst:fsm-api, language=Java, numbers=none, xleftmargin=0pt, tabsize=1]
 class Fsm {
-  Fsm(String name);
-  State initial(String name);
-  State state(String name);
-  Fsm end();
+	Fsm(Str name);
+	State init(Str name);
+	State state(Str name);
+	Fsm   end();
 }
 class State {
-  State state(String name);
-  Transition target(String stateName);
-  Fsm end();
+	State state(Str name);
+	Trans tgt(Str name);
+	Fsm   end();
 }
-class Transition {
-  Transition target(String stateName);
-  State on(String event);
-  Fsm end();
+class Trans {
+	Trans tgt(Str name);
+	State on(Str event);
+	Fsm   end();
 }
-%\end{lstlisting}
-\end{minipage}
-\end{figure*}
+		\end{lstlisting}
+		\caption{Java API}
+	\end{subfigure}
+	\caption{Three shapes of an FSM language}
+\end{figure}
 
 \subsection{Rascal}
 
