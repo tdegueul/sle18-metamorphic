@@ -34,7 +34,6 @@
 %\setcopyright{cagov}
 %\setcopyright{cagovmixed}
 
-
 % DOI
 %\acmDOI{10.475/123_4}
 
@@ -121,7 +120,7 @@ The distinction between language vehicles is orthogonal to the distinction betwe
 %In addition, we consider a cohesive set of tools in a given TS (\eg~a particular language workbench) as a separate TS.
 For instance, following this definition, we view Rascal and Spoofax as two distinct language vehicles within the broader TS of grammarware and meta-programming, and EMF and UML (through Profiles) as two distinct language vehicles within the broader TS of modelware.
 LVs usually come with their own meta-languages for expressing the various aspects of a DSL:~abstract syntax, concrete syntax, static and execution semantics, \etc.
-Examples of prominent LV include meta-modeling environments such as EMF~\cite{steinberg2008emf}, meta-programming environments such as Rascal~\cite{klint2010easy} and Spoofax~\cite{kats2010spoofax}, projectional environments \td{Doesn't really make sense} such as MPS~\cite{voelter2013language}, plain old programming languages such as Racket~\cite{felleisen2018programmable} or Scala~\cite{hofer2010modular}, and language workbenches (LWBs) in general~\cite{erdweg2015evaluating}.
+Examples of prominent LV include meta-modeling environments such as EMF~\cite{steinberg2008emf}, meta-programming environments such as Rascal~\cite{klint2010easy} and Spoofax~\cite{kats2010spoofax}, projectional environments such as MPS~\cite{voelter2013language}, plain old programming languages such as Racket~\cite{felleisen2018programmable} or Scala~\cite{hofer2010modular}, and language workbenches (LWBs) in general~\cite{erdweg2015evaluating}'.
 As implementation techniques radically differ from one LV to the other, this initial design choice commits the development of a DSL in a set direction that can hardly be reconsidered later on.
 
 From a language designer's point of view, however, every TS comes with its unique strengths.
@@ -218,6 +217,7 @@ Metamorphic synchronization refers to the ability to synchronize the projections
 
 \begin{definition}
 A technological space is a collection of tools and an environment defining a coherent space where users can design and use Languages.
+\td{There's already a definition of TS that we should reuse (\cf footnote 1 page 1---\citeauthor{kurtev2002technological}~\cite{kurtev2002technological}}
 \end{definition}
 
 \begin{definition}
@@ -225,8 +225,8 @@ A projection of model is a relation between a conceptual model and its different
 All of theses incarnations represent the same model but in different formalisms and technologies.
 They are two necessary properties to have a model projection.
 \begin{itemize}
-	\item incarnations have to be in an equivalent states.
-	\item incarnations have to be synchronized, i.e., any change on an incarnation is a change on the conceptual model and thus other incarnations have to apply the same change.
+	\item incarnations have to be in an equivalent \td{what does ``equivalent'' mean here?} states.
+	\item incarnations have to be synchronized, i.e., any change on an incarnation is a change on the conceptual model and thus other incarnations have to apply the same change \td{Isn't that a duplicate of the previous point? Remove the first?}.
 \end{itemize}
 \end{definition}
 
@@ -247,6 +247,7 @@ A prism is the context of a model projection is the mechanism that allows the di
 
 \begin{definition}
 A shape is a projection of a language in a particular technological space.
+\td{Is it equivalent to the language \emph{implementation}?}
 An incarnation of a model is conform to a shape of language if both are in the same technological space and if the model is conform to the language.
 \end{definition}
 
@@ -358,6 +359,7 @@ The inconsistency of the incarnations of a model happen when one of them produce
 	\item Transforming context-heavy Java ASTs is challenging; our tool is stupid in that respect; DIY;
 	\item We do not really know if our patch formalism is sufficient; what if you want to plug another formalism; is there anything missing?
 	\item \cite{lammel2005mappings}
+	\item Delta/edit scripts are known (ref?), ``pivot'' formalisms are---infamously---known, we combine both in a new context; why? what do we get from that?
 \end{itemize}
 
 \clearpage
