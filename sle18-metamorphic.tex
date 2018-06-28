@@ -338,6 +338,15 @@ A source of divergence with other Shapes of FSM is the encoding of the initial S
 We choose to represent a State by the method state() or by the method initial().
 As the initial State is unique, we enforce its declaration as the first method invocation in the FSM. This solution solve the uniqueness but enforce the first state to be initial that it can be a source of divergence if models in other shape have a reference designating the initial state that is not in the first position. (if the order of State is part of the State Identifier)
 
+The Java fluent API shape tends to break more easily the synchronization of their incarnations of models than the other shapes.
+Indeed this shape of FSM language is an embedded language and has to rely on the host language for both the tooling and the expressiveness.
+In the case of Java as host language, the validation service provided by the editor has no knowledge about the FSM language.
+It makes harder for the user to detect mistakes such as typo. The FSM model can be in unnoticed dirty state and this can lead to the production of dirty Patches.
+In the opposite the incarnation of the model can receive inapplicable Patches in this technological space.
+For example in the Java TS, receiving a Patch telling to reference the second state of an FSM as the initial state is not possible due to the expressiveness of the API and this result in the desynchronization of the incarnation of the model.
+
+The inconsistency of the incarnations of a model happen when one of them produce a dirty Patch or when one of them can't apply a Patch.
+
 \section{Discussion \& Next Steps}
 \td{If we write a vision paper, there must be a vision. Next steps? Roadmap? Challenges? What should the reader gain from reading this paper?}
 \td{\eg It works here for 3 ``representative'' TS. What should you have in mind if you want to do that for others? What if you want to scale for collaborative/live modeling? \etc}
