@@ -1,12 +1,35 @@
-\section{Incremental Synchronization of Metamorphic DSLs}
+\section{Incremental Synchronization of Shapes}
 %\td{\emph{Our} simple impl., \emph{our} patch formalism, \emph{our} dispatch, \etc}
-The cornerstone artifact defining a DSL in any LV is its abstract syntax \td{Can we legitimately say that for Java?}.
-The way abstract syntax is expressed differs drastically from one LWB to another: Xtext\footnote{\url{https://www.eclipse.org/Xtext/}} and GEMOC~\cite{bousse2016execution} use Ecore metamodels~\cite{steinberg2008emf}; Spoofax~\cite{kats2010spoofax} uses SDF grammars~\cite{heering1989syntax}; MPS\footnote{\url{https://www.jetbrains.com/mps/}} uses \emph{concepts}; Rascal~\cite{klint2010easy} uses Algebraic Data Types (ADT); \etc.
-Language embedding techniques, on the other hand, use the constructs of an host language to materialize the abstractions of a DSL in the host language itself.
-In all models, concrete models are then built as instances of the corresponding abstract syntax formalism:~Ecore models, ADT values, Java constructs, \etc.
-The tools defined within a given TS (\eg~an interpreter in Rascal, an editor in EMF) manipulate models in the appropriate formalism (\eg, respectively, ADT values and Ecore models).
 
-A naive way to bridge these TS would be to define bidirectional transformations between the AS formalisms of every pair $\langle TS, TS' \rangle$.
+The cornerstone artifact defining a DSL in any LV is its abstract syntax.
+The way abstract syntax is expressed differs drastically from one LV to another: GEMOC~\cite{bousse2016execution} and Xtext~\cite{bettini2016implementing}---under the hood---use Ecore metamodels~\cite{steinberg2008emf}; MPS\footnote{\url{https://www.jetbrains.com/mps/}} uses \emph{concepts}; Rascal~\cite{klint2010easy} uses Algebraic Data Types (ADT); \etc.
+Language embedding techniques, on the other hand, use the constructs of an host language to materialize the abstractions of a DSL in the host language itself (\eg~a set of Java classes).
+Concrete models are then built as instances of the corresponding abstract syntax formalism:~Ecore models, ADT values, Java ASTs, \etc.
+The tools defined within a particular LV (\eg~an interpreter in Rascal, an editor in EMF) manipulate models in the appropriate formalism (respectively, ADT values and Ecore models).
+Thus, bridging various LV requires to:
+\begin{enumerate}
+	\item Synchronize the various in-memory representations of the same model;
+	\item Allow every LV to maintain the extra information it needs to properly work (layout information in graphical and textual editors, runtime state, AST context, \etc);
+	\item From 1. and 2., it follows that the synchronization must be incremental.
+\end{enumerate}
+
+\Cref{fig:prism} depicts our approach, \prism.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=.6\columnwidth]{figures/prism}
+	\caption{A model projected in different Technological Spaces}
+	\label{fig:prism}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=.6\columnwidth]{figures/concepts}
+	\caption{TODO: concepts}
+	\label{fig:concepts}
+\end{figure}
+
+A naive way to bridge different LV would be to define bidirectional transformations between the abstract syntax formalisms of every pair $\langle LV, LV' \rangle$.
 Doing so however would break \emph{incrementality}, \ie~it would not be possible to maintain the extra information every TS holds, such as layout in a editor or runtime data when running models.
 In our approach, instead, every change occuring on one side is shipped to all the other sides.
 The latter then decide which parts of the changes they want to take into account.
@@ -55,13 +78,6 @@ We use the term ``language'' to refer to the specification of a language indepen
 A concrete implementation of a language is a ``shape''.
 An instance of a shape, \ie~a particular model in a particular TS, is a ``projection'' of a ``virtual'' model.
 Metamorphic synchronization refers to the ability to synchronize the projections of a given model for every shapes of a language.
-
-\begin{figure}
-	\centering
-	\includegraphics[width=.6\columnwidth]{figures/prism}
-	\caption{A model projected in different Technological Spaces}
-	\label{fig:prism}
-\end{figure}
 
 \begin{definition}
 A technological space is a collection of tools and an environment defining a coherent space where users can design and use Languages.
