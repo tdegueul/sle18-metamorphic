@@ -20,7 +20,7 @@ Thus, bridging various LV requires to:
 \begin{figure}
 	\centering
 	\includegraphics[width=.6\columnwidth]{figures/prism}
-	\caption{A model projected in different Technological Spaces}
+	\caption{A model projected in different LVs}
 	\label{fig:prism}
 \end{figure}
 
@@ -82,37 +82,21 @@ An instance of a shape, \ie~a particular model in a particular TS, is a ``projec
 Metamorphic synchronization refers to the ability to synchronize the projections of a given model for every shapes of a language.
 
 \begin{definition}
-A technological space is a collection of tools and an environment defining a coherent space where users can design and use Languages.
-\td{There's already a definition of TS that we should reuse (\cf footnote 1 page 1---\citeauthor{kurtev2002technological}~\cite{kurtev2002technological}}
-\end{definition}
-
-\begin{definition}
-A projection of model is a relation between a conceptual model and its different incarnations in the technological spaces.
+A projection of model is a relation between a conceptual model and its different incarnations in the LVs.
 All of theses incarnations represent the same model but in different formalisms and technologies.
-They are two necessary properties to have a model projection.
-\begin{itemize}
-	\item incarnations have to be in an equivalent \td{what does ``equivalent'' mean here?} states.
-	\item incarnations have to be synchronized, i.e., any change on an incarnation is a change on the conceptual model and thus other incarnations have to apply the same change \td{Isn't that a duplicate of the previous point? Remove the first?}.
-\end{itemize}
+Incarnations have to be synchronized, i.e., any change on an incarnation is a change on the conceptual model and thus other incarnations have to apply the same change.
 \end{definition}
 
 \begin{definition}
-The equivalence between the state of different incarnations is defined thanks to a Diff operation.
-The Diff operation compare two states and output a description of the changes between them.
-Two incarnations are in equivalent state if the Diff between a state and an empty state is equal for both incarnation.
-Moreover for any change operation applicable to an incarnation, the two incarnations have to be in an equivalent state after the change.
+An incarnation is in the context of a model projection what is representing the model in a given LV.
 \end{definition}
 
 \begin{definition}
-An incarnation is in the context of a model projection what is representing the model in a given technological space.
+A prism in the context of a model projection is the mechanism that allows the different incarnations of the model to be in equivalent state and to synchronize.
 \end{definition}
 
 \begin{definition}
-A prism is the context of a model projection is the mechanism that allows the different incarnations of the model to be in equivalent state and to synchronize.
-\end{definition}
-
-\begin{definition}
-A shape is a projection of a language in a particular technological space.
-\td{Is it equivalent to the language \emph{implementation}?}
-An incarnation of a model is conform to a shape of language if both are in the same technological space and if the model is conform to the language.
+A shape is a projection of a language in a particular LV.
+It is equivalent to a language implementation in a LV.
+Therefore if a model is conform to the language, all its incarnations in this LV are conform to the shape.
 \end{definition}
