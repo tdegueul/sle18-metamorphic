@@ -37,21 +37,24 @@ However, it is neither possible nor desirable to establish a common formalism up
 \end{figure}
 
 In \Cref{fig:concepts} we describe a projection of language and model in different LVs.
-A language is projected as shapes in different LVs.
-We define a shape as following:
-\begin{definition}
-A shape is a projection of a language in a particular LV.
-It is equivalent to a language implementation in a LV.
-Therefore if a model is conform to the language, all its incarnations in this LV are conform to the shape.
-\end{definition}
-Models conforms to the language are projected as incarnations in different LVs.
-Incarnations are the projection of the same model.
+A model is projected into several LVs.
+The projection takes the form of incarnations the same model in the different LVs.
 We define the projection of model as following:
 \begin{definition}
 A projection of model is a relation between a conceptual model and its different incarnations in the LVs.
 All of theses incarnations represent the same model but in different formalisms and technologies.
 Incarnations have to be synchronized, i.e., any change on an incarnation is a change on the conceptual model and thus other incarnations have to apply the same change.
 \end{definition}
+In a similar way the language is projected as shapes into the LVs.
+We define a shape as following:
+\begin{definition}
+A shape is a projection of a language in a particular LV.
+It is equivalent to a language implementation in this LV.
+Therefore if a model is conform to the language, all its incarnations in this LV are conform to the shape.
+\end{definition}
+Mirroring model and language, each incarnation of a LVs is conform to a shape.
+
+Since the LVs are isolated but incarnations represent the same model, there is a need for a synchronization mechanism.
 
 
 %\begin{definition}
