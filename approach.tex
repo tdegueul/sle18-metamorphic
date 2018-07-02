@@ -1,13 +1,11 @@
 \section{Incremental Synchronization of Shapes}
-%\td{\emph{Our} simple impl., \emph{our} patch formalism, \emph{our} dispatch, \etc}
-
-\td{@Fabien:~imho, your definitions should describe what is depicted in \Cref{fig:concepts}. This is the basis to then describe \Cref{fig:prism} which builds upon these concepts to detail our approach. Could be two subsections.}
+\label{sec:prism}
 
 The cornerstone artifact defining a DSL in any LV is its abstract syntax.
 The way abstract syntax is expressed differs drastically from one LV to another: GEMOC~\cite{bousse2016execution} and Xtext~\cite{bettini2016implementing}---under the hood---use Ecore metamodels~\cite{steinberg2008emf}; MPS\footnote{\url{https://www.jetbrains.com/mps/}} uses \emph{concepts}; Rascal~\cite{klint2010easy} uses Algebraic Data Types (ADT); \etc.
 Language embedding techniques, on the other hand, use the constructs of an host language to materialize the abstractions of a DSL in the host language itself (\eg~a set of Java classes).
 Concrete models are then built as instances of the corresponding abstract syntax formalism:~Ecore models, ADT values, Java ASTs, \etc.
-The tools defined within a particular LV (\eg~an interpreter in Rascal, an editor in EMF) manipulate models in the appropriate formalism (respectively, ADT values and Ecore models).
+The tools defined within a particular LV (an interpreter in Rascal, an editor in EMF) manipulate models in the corresponding formalism (respectively, ADT values and Ecore models).
 Thus, bridging various LV requires to:
 \begin{enumerate}
 	\item Synchronize the various in-memory representations of the same model;
