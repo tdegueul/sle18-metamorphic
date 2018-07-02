@@ -17,20 +17,6 @@ Thus, bridging various LV requires to:
 
 \Cref{fig:prism} depicts our approach, \prism.
 
-\begin{figure}
-	\centering
-	\includegraphics[width=.6\columnwidth]{figures/prism}
-	\caption{A model projected in different LVs}
-	\label{fig:prism}
-\end{figure}
-
-\begin{figure}
-	\centering
-	\includegraphics[width=.8\columnwidth]{figures/concepts}
-	\caption{Languages (resp.~models) are projected as shapes (resp.~incarnations) in LVs. Just as models conform to languages, incarnations conform to shapes.\\NB: \emph{projectedAs $\Rightarrow$ realizedBy} or something else?}
-	\label{fig:concepts}
-\end{figure}
-
 A naive way to bridge different LV would be to define bidirectional transformations between the abstract syntax formalisms of every pair $\langle LV, LV' \rangle$.
 Doing so however would break \emph{incrementality}, \ie~it would not be possible to maintain the extra information every TS holds, such as layout in a editor or runtime data when running models.
 In our approach, instead, every change occuring on one side is shipped to all the other sides.
@@ -40,6 +26,46 @@ An outline, for instance, would probably ignore most of the changes and focus on
 Bridging multiple TS thus requires to ``align'' in some ways the representation of the AS of a language in these different TS.
 As an illustration, the EMF and the Rascal LWB expose fundamental differences:~object-oriented vs. functional, graphs vs. trees, mutable ASG vs. immutable ASTs, cross-references vs. symbolic names, \etc.
 However, it is neither possible nor desirable to establish a common formalism upon which various TS would agree:~mapping those is out of reach.
+
+\subsection{Projection of language}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=.8\columnwidth]{figures/concepts}
+	\caption{Languages (resp.~models) are projected as shapes (resp.~incarnations) in LVs. Just as models conform to languages, incarnations conform to shapes.\\NB: \emph{projectedAs $\Rightarrow$ realizedBy} or something else?}
+	\label{fig:concepts}
+\end{figure}
+
+In \Cref{fig:concepts} we describe a projection of language and model in different LVs.
+A language is projected as shapes in different LVs.
+We define a shape as following:
+\begin{definition}
+A shape is a projection of a language in a particular LV.
+It is equivalent to a language implementation in a LV.
+Therefore if a model is conform to the language, all its incarnations in this LV are conform to the shape.
+\end{definition}
+Models conforms to the language are projected as incarnations in different LVs.
+Incarnations are the projection of the same model.
+We define the projection of model as following:
+\begin{definition}
+A projection of model is a relation between a conceptual model and its different incarnations in the LVs.
+All of theses incarnations represent the same model but in different formalisms and technologies.
+Incarnations have to be synchronized, i.e., any change on an incarnation is a change on the conceptual model and thus other incarnations have to apply the same change.
+\end{definition}
+
+
+%\begin{definition}
+%A prism in the context of a model projection is the mechanism that allows the different incarnations of the model to be in equivalent state and to synchronize.
+%\end{definition}
+
+\subsection{Synchronization of incarnations}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=.6\columnwidth]{figures/prism}
+	\caption{A model projected in different LVs}
+	\label{fig:prism}
+\end{figure}
 
 The key underlying idea of our approach is to provide the capability, at any time, to ``project'' a given model in any of its shapes and to synchronize those shapes whenever one of them is updated.
 We enable the projection of a given model as an ADT value, to be manipulated in the Rascal TS, or as an Ecore model, to be manipulated in the EMF TS.
@@ -81,22 +107,5 @@ A concrete implementation of a language is a ``shape''.
 An instance of a shape, \ie~a particular model in a particular TS, is a ``projection'' of a ``virtual'' model.
 Metamorphic synchronization refers to the ability to synchronize the projections of a given model for every shapes of a language.
 
-\begin{definition}
-A projection of model is a relation between a conceptual model and its different incarnations in the LVs.
-All of theses incarnations represent the same model but in different formalisms and technologies.
-Incarnations have to be synchronized, i.e., any change on an incarnation is a change on the conceptual model and thus other incarnations have to apply the same change.
-\end{definition}
 
-\begin{definition}
-An incarnation is in the context of a model projection what is representing the model in a given LV.
-\end{definition}
 
-\begin{definition}
-A prism in the context of a model projection is the mechanism that allows the different incarnations of the model to be in equivalent state and to synchronize.
-\end{definition}
-
-\begin{definition}
-A shape is a projection of a language in a particular LV.
-It is equivalent to a language implementation in a LV.
-Therefore if a model is conform to the language, all its incarnations in this LV are conform to the shape.
-\end{definition}
