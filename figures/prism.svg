@@ -30,14 +30,14 @@
    inkscape:pageopacity="0"
    inkscape:pageshadow="2"
    inkscape:window-width="1920"
-   inkscape:window-height="1043"
+   inkscape:window-height="1016"
    id="namedview805"
    showgrid="false"
-   inkscape:zoom="0.5946522"
-   inkscape:cx="210.456"
-   inkscape:cy="408.24964"
+   inkscape:zoom="0.84096521"
+   inkscape:cx="519.84829"
+   inkscape:cy="358.01086"
    inkscape:window-x="0"
-   inkscape:window-y="0"
+   inkscape:window-y="27"
    inkscape:window-maximized="1"
    inkscape:current-layer="svg803"
    fit-margin-top="0"
@@ -849,6 +849,7 @@
 
 
 
+
        </g>
       </g><g
    id="g349"
@@ -1418,6 +1419,7 @@
 
 
 
+
        </g>
       </g><g
    id="g535"
@@ -1448,6 +1450,7 @@
        class="TextPosition"><tspan
          style="fill:#808080;stroke:none"
          id="tspan526">Projection</tspan></tspan></tspan></text>
+
 
 
 
@@ -1485,6 +1488,7 @@
 
 
 
+
        </g>
       </g><g
    id="g561"
@@ -1514,6 +1518,7 @@
        class="TextPosition"><tspan
          style="fill:#000000;stroke:none"
          id="tspan552">Incarnation #1</tspan></tspan></tspan></text>
+
 
 
 
@@ -1551,6 +1556,7 @@
 
 
 
+
        </g>
       </g><g
    id="g587"
@@ -1580,6 +1586,7 @@
        class="TextPosition"><tspan
          style="fill:#000000;stroke:none"
          id="tspan578">3: Apply Patch</tspan></tspan></tspan></text>
+
 
 
 
@@ -1792,6 +1799,7 @@
 
 
 
+
         </g>
        </g><g
    id="g679"
@@ -1846,6 +1854,7 @@
        class="TextPosition"><tspan
          style="fill:#000000;stroke:none"
          id="tspan683">3: Apply Patch</tspan></tspan></tspan></text>
+
 
 
 
@@ -2034,7 +2043,7 @@
       </g><g
    id="g775"
    class="com.sun.star.drawing.TextShape"
-   transform="translate(2931.6664,-5047)">
+   transform="rotate(32.955934,20067.969,16818.981)">
        <g
    id="id26">
         <rect
@@ -2060,6 +2069,7 @@
        class="TextPosition"><tspan
          style="fill:#000000;stroke:none"
          id="tspan766">2: Dispatch</tspan></tspan></tspan></text>
+
 
 
 
