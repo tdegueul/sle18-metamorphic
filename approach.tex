@@ -13,8 +13,8 @@ However, it is neither possible nor desirable to establish a common formalism up
 A ``conceptual'' language $\mathcal{L}$ is materialized as a shape $\mathcal{S}$ in a LV.
 $\mathcal{S}$ can therefore be seen as the implementation of $\mathcal{L}$ in the LV.
 Similarly, a ``conceptual'' model $m$ conforming to $\mathcal{L}$ is materialized as an incarnation $\mathcal{I}$ conforming to the shape $\mathcal{S}$ in a LV.
-\td{Not very proud of the ``conceptual''. Any idea?}
-As each shape manipulate models in its own formalism, the various incarnations $I$ of the same model $m$ must remain synchronized with each others.
+\td{Not very proud of the ``conceptual''. Is ``abstract'' better? Any idea?}
+As each shape manipulate models in its own formalism, all incarnations $I$ of the same model $m$ must remain synchronized.
 
 A naive way to bridge different LVs would be to define bidirectional transformations between the abstract syntax formalisms of every pair $\langle LV, LV' \rangle$.
 Doing so however would close the world around the chosen set of LVs.
@@ -37,6 +37,10 @@ Every shape is responsible for\dots
 \end{enumerate}
 
 \subsection{Projection of language}
+Whenever an incarnation of a model is updated, it produces a patch that is shipped to \prism.
+\prism then propagates the patch to every other incarnation of the same model using a simple matrix that keeps track of which model every incarnation is a projection of.
+Every LV is then responsible for updating its own incarnation by interpreting the patch.
+
 In \Cref{fig:concepts} we describe a projection of language and model in different LVs.
 A model is projected into several LVs.
 The projection takes the form of incarnations the same model in the different LVs.
