@@ -15,7 +15,7 @@ As implementation techniques radically differ from one LV to another, this initi
 From the language designer's point of view, however, every LV has its own strengths.
 The ecosystem around EMF excels in the definition of, for instance, graphical editors and persistence frameworks for large models, while the Rascal environment excels in the definition of, for instance, interpreters and refactoring tools.
 %On the other hand, the flexibility of manipulating the concepts of a DSL through a fluent API, using the capabilities of a general-purpose programming language, is unmatched.
-The benefits of various LV are also visible from the language users' point of view.
+The benefits of various LVs are also visible from the language users' point of view.
 While domain experts may prefer to manipulate domain concepts through a dedicated syntax, advanced users (\eg~system integrators) may favor the flexibility of a fluent API in their favorite programming language to manipulate the very same abstractions.
 %However, it is currently not possible to \emph{combine the strengths of multiple LV to engineer a single DSL}.
 %\td{Why?}
@@ -32,13 +32,12 @@ Rascal could be used to develop its interpreter, a set of refactoring tools (\eg
 \end{figure}
 
 Using today's techniques, it is possible to define the same FSM language in these three LV separately.
-It is not possible, however, to apply the tools of a given LV on the models created in another LV---for instance, animating a FSM model written in EMF using the Rascal interpreter, or synchronizing a textual FSM model in Rascal with its equivalent incarnation in the form of a Java AST.
-Achieving this goal requires to synchronize the diverse in-memory representations of the same model in different LV; for instance to let the Rascal interpreter update its in-memory representation of an FSM model and synchronize it with the in-memory representation of the same model in EMF.
+It is not possible, however, to apply the tools of a given LV on the models created in another LV---for instance, animating a FSM model written in EMF using the Rascal interpreter, or synchronizing a textual FSM model in Rascal with its equivalent incarnation as a Java AST.
+Achieving this goal requires to \emph{synchronize the diverse in-memory representations of the same model in different LVs}; for instance to let the Rascal interpreter update its in-memory representation of an FSM model after each execution step and synchronize it with the in-memory representation of the same model in EMF.
 
-In this paper, we envision a language engineering activity where language designers combine tools from multiple vehicles to engineer a single DSL.
-We endeavor to show \emph{how to break down the barriers between different vehicles so that language designers can combine the strengths of each in the engineering of a single DSL, and language users can synchronize their models across various shapes}.
+In this paper, we envision a language engineering approach enabling (i) language designers to combine tools from multiple vehicles to engineer a single DSL and (ii) language users to manipulate their abstractions in the most appropriate shape.
+%We endeavor to show \emph{how to break down the barriers between different vehicles so that language designers can combine the strengths of each in the engineering of a single DSL, and language users can synchronize their models across various shapes}.
 %\emph{Metamorphic synchronization} refers to the possibility of synchronizing different incarnations of the same model in different shapes of a language, \ie~in different vehicles.
 %As different vehicles rely on radically different theories, a successful approach for bridging them must thus \emph{align} \td{!no!} them in some way.
-
-We first present our approach, \prism, in \Cref{sec:prism}, and then highlight our implementation of the shape-diverse FSM language in \Cref{sec:eval}.
+We first present our approach, \prism, in \Cref{sec:prism}, and then highlight our implementation of a shape-diverse FSM language in \Cref{sec:eval}.
 Finally, we discuss the research challenges we identify and next steps in \Cref{sec:discussion}.
