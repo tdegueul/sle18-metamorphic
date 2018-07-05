@@ -32,12 +32,13 @@ As LVs are developed by independent groups of people and rely on different under
 \end{figure}
 
 \Cref{fig:concepts} gives an overview of the concepts we use in this paper to address this problem.
-A ``conceptual'' language $\mathcal{L}$ is materialized as a shape $\mathcal{S}$ in a LV.
+A ``conceptual'' language $\mathcal{L}$ is materialized as a \emph{shape} $\mathcal{S}$ in a LV.
 $\mathcal{S}$ can therefore be seen as the implementation of $\mathcal{L}$ in the LV.
-Similarly, a ``conceptual'' model $m$ conforming to $\mathcal{L}$ is materialized as an incarnation $\mathcal{I}$ conforming to the shape $\mathcal{S}$ in a LV.
+As mentioned earlier, Ecore metamodels, ADT definitions, and Java APIs are examples of shapes.
+Similarly, a ``conceptual'' model $m$ conforming to $\mathcal{L}$ is materialized as an incarnation $\mathcal{I}$ conforming to the shape $\mathcal{S}$ in a LV: an Ecore model, an ADT value, or a Java AST.
 %\td{Not very proud of the ``conceptual''. Is ``abstract'' better? Any idea?}
-%\fc{Language Specification and Abstract Model?}
-Synchronization must thus happen between the various incarnations of a model.
+%\fc{Language Specification and Abstract Model?} 
+Synchronization must thus happen between the various incarnations of a model, such as the ones depicted in \Cref{fig:motivating-fsm}.
 %As each shape manipulate models in its own formalism, all incarnations $I$ of the same model $m$ must remain synchronized.
 
 %An obvious way to bridge different LVs would be to define bidirectional transformations between the abstract syntax formalisms of every pair $\langle LV, LV' \rangle$.
@@ -84,7 +85,6 @@ Mirroring model and language, each incarnation of a LVs is conform to a shape.
 
 Since the LVs are isolated but incarnations represent the same model, there is a need for a synchronization mechanism.
 
-
 %\begin{definition}
 %A prism in the context of a model projection is the mechanism that allows the different incarnations of the model to be in equivalent state and to synchronize.
 %\end{definition}
@@ -94,7 +94,7 @@ Since the LVs are isolated but incarnations represent the same model, there is a
 \begin{figure}[bt]
 	\centering
 	\includegraphics[width=.6\columnwidth]{figures/prism}
-	\caption{A model projected in different LVs}
+	\caption{Using \prism to synchronize Incarnation \#1 with two other incarnations of the same model}
 	\label{fig:prism}
 \end{figure}
 
