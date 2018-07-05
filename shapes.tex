@@ -1,0 +1,59 @@
+\section{Shape-diverse DSLs}
+\label{sec:shape-diverse}
+
+The cornerstone artifact defining a DSL in any LV is its abstract syntax.
+The way abstract syntax is expressed differs drastically from one LV to another: GEMOC~\cite{bousse2016execution} and Xtext~\cite{bettini2016implementing} use Ecore metamodels~\cite{steinberg2008emf}; MPS~\cite{voelter2014generic} uses \emph{concepts}; Rascal~\cite{klint2010easy} uses Algebraic Data Types (ADT); \etc.
+Language embedding techniques, on the other hand, use the constructs of an host language to materialize the abstractions of a DSL in the host language itself (\eg~a set of Java classes).
+Concrete models are then built as instances of the corresponding abstract syntax formalism:~Ecore models, ADT values, Java ASTs, \etc.
+The tools defined within a particular LV (an interpreter in Rascal, an editor in EMF) manipulate models in the corresponding formalism (respectively, ADT values and Ecore models).
+These formalisms radically differ in many ways:~object-oriented vs. functional, graphs vs. trees, mutable ASG vs. immutable ASTs, cross-references vs. symbolic names, \etc.
+As LVs are developed by independent groups of people and rely on different underlying theories, it is neither possible nor desirable to establish a common formalism upon which all LVs would agree.
+
+%\Cref{fig:concepts} gives an overview of the concepts we use throughout this paper.
+%A ``conceptual'' language $\mathcal{L}$ is materialized as a shape $\mathcal{S}$ in a LV.
+%$\mathcal{S}$ can therefore be seen as the implementation of $\mathcal{L}$ in the LV.
+%Similarly, a ``conceptual'' model $m$ conforming to $\mathcal{L}$ is materialized as an incarnation $\mathcal{I}$ conforming to the shape $\mathcal{S}$ in a LV.
+%\td{Not very proud of the ``conceptual''. Is ``abstract'' better? Any idea?}
+%\fc{Language Specification and Abstract Model?}
+%As each shape manipulate models in its own formalism, all incarnations $I$ of the same model $m$ must remain synchronized.
+%
+%A naive way to bridge different LVs would be to define bidirectional transformations between the abstract syntax formalisms of every pair $\langle LV, LV' \rangle$.
+%Doing so however would close the world around the chosen set of LVs.
+%As every LV holds particular extra information on its incarnations, such as layout in an editor, runtime data for running models, or context information around API calls, the synchronization must be incremental.
+%
+%In our approach, \prism, every change occuring on one incarnation is shipped to all other incarnations of the same model.
+%Every shape \fc{LV responsibility?} is responsible for\dots
+
+\begin{figure}[bt]
+	\centering
+	\includegraphics[width=.8\columnwidth]{figures/concepts}
+	\caption{Languages (resp.~models) are projected as shapes (resp.~incarnations) in LVs. Just as models conform to languages, incarnations conform to shapes.\\NB: \emph{projectedAs $\Rightarrow$ realizedBy / materializedBy}?}
+	\label{fig:concepts}
+\end{figure}
+
+\Cref{fig:concepts} gives an overview of the concepts we use in this paper to address this problem.
+A ``conceptual'' language $\mathcal{L}$ is materialized as a \emph{shape} $\mathcal{S}$ in a LV.
+$\mathcal{S}$ can therefore be seen as the implementation of $\mathcal{L}$ in the LV.
+As mentioned earlier, Ecore metamodels, ADT definitions, and Java APIs are examples of shapes.
+Similarly, a ``conceptual'' model $m$ conforming to $\mathcal{L}$ is materialized as an incarnation $\mathcal{I}$ conforming to the shape $\mathcal{S}$ in a LV: an Ecore model, an ADT value, or a Java AST.
+%\td{Not very proud of the ``conceptual''. Is ``abstract'' better? Any idea?}
+%\fc{Language Specification and Abstract Model?} 
+Synchronization must thus happen between the various incarnations of a model, such as the ones depicted in \Cref{fig:motivating-fsm}.
+%As each shape manipulate models in its own formalism, all incarnations $I$ of the same model $m$ must remain synchronized.
+
+%An obvious way to bridge different LVs would be to define bidirectional transformations between the abstract syntax formalisms of every pair $\langle LV, LV' \rangle$.
+%Doing so however would close the world around the chosen set of LVs.
+%As every LV holds particular extra information on its incarnations, such as layout in an editor, runtime data for running models, or context information around API calls, the synchronization must be incremental.
+
+This synchronization mechanism must ensure two important properties.
+First, it must not close the world around a chosen set of LVs:~it should be possible to easily plug new LVs and shapes to meet new requirements from users and designers.
+This rules out any synchronization approach that would require to be defined for every pair $\langle LV, LV' \rangle$, such as bidirectional transformations. \td{Debatable}
+Second, it must account for any extra shape-specific information the various LVs have to maintain to function properly.
+Examples of such extra information include layout information in a textual or graphical editor, or runtime state in a simulation environment.
+Every LV should be able to update its own incarnation while maintaining this extra information.
+
+\Cref{fig:prism} depicts our approach to this problem, \prism.
+The key idea is that every change occuring on one incarnation is shipped to all other incarnations of the same model in the form of a \patch.
+\prism keeps track of a matrix that associates every ``conceptual'' model to its incarnations in various LVs.
+When a change occurs on one incarnation, as the result of a user edit or following an execution step of an interpreter, for instance, the LV hosting this incarnation generates a \patch describing the change as a set of CRUD-like operations.
+In our prototype implementation, the structure of this patch is prescribed by the Rascal ADT shown in \Cref{lst:delta-adt}.
