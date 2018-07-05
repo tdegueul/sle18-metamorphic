@@ -59,6 +59,9 @@ When a change occurs on one incarnation, as the result of a user edit or followi
 In our prototype implementation, the structure of this patch is prescribed by the Rascal ADT shown in \Cref{lst:delta-adt}.
 
 \subsection{Projection of language}
+\td{Languages aren't actually projected (they could, but not our focus).}
+\td{I do not get the sectioning. Actually I would rename Section 2 to something else (conceptual something\dots), and rename 2.1 as Section 3 with current Section 2 title without subsections}
+
 Whenever an incarnation of a model is updated, it produces a patch that is shipped to \prism.
 \prism then propagates the patch to every other incarnation of the same model using a simple matrix that keeps track of which model every incarnation is a projection of.
 Every LV is then responsible for updating its own incarnation by interpreting the patch.
