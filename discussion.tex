@@ -1,18 +1,27 @@
 \section{Discussion \& Next Steps}
 \label{sec:discussion}
-\td{If we write a vision paper, there must be a vision. Next steps? Roadmap? Challenges? What should the reader gain from reading this paper?}
-\td{\eg It works here for 3 ``representative'' TS. What should you have in mind if you want to do that for others? What if you want to scale for collaborative/live modeling? \etc}
-\begin{itemize}
-	\item Our approach goes beyond what is described here. \eg synchronizing an outline view, a debugger, live modeling, w/e; also, we are AS-centric, but one could imagine something radically different;
-	\item We don’t care how the list of changes is obtained. Diff is \emph{a} way to get there (as in the Rascal implementation), but obtaining the list of changes through other means (e.g., a transaction on a tree editor in EMF) is just as valid;
-	\item Our dispatch is braindead. A better dispatch may enable collaborative editing, distributed synchronization, \etc;
-	\item It may or may not be possible to automatically generate a shape from another. \eg~we did it for Ecore $\leftrightarrow$ Rascal;
-	\item Transforming context-heavy Java ASTs is challenging; our tool is stupid in that respect; DIY;
-	\item We do not really know if our patch formalism is sufficient; what if you want to plug another formalism; is there anything missing?
-	\item \cite{lammel2005mappings}
-	\item Delta/edit scripts are known (ref?), ``pivot'' formalisms are---infamously---known, we combine both in a new context; why? what do we get from that?
-	\item We view this initial contribution as a first step towards \emph{metamorphic DSLs}~\cite{acher2014metamorphic}.
-	\item We need a mechanism to valid produced Patches and their interpretations to detect desynchronization of incarnations (what should we do then? roll back? fix Patch? )
-    \item The rigidity of SLE must be thought. Must find ways to let the users move agilely from shapes to shapes, and let the designers combine the strengths of multiple LV;
-    \item Obviously, discuss LSP \& Monto.
-\end{itemize}
+The rigidity of SLE must be thought. Must find ways to let the users move agilely from shapes to shapes, and let the designers combine the strengths of multiple LV;
+Our approach goes beyond what is described here. \eg synchronizing an outline view, a debugger, live modeling, w/e; also, we are AS-centric, but one could imagine something radically different;
+Delta/edit scripts are known (ref?), ``pivot'' formalisms are---infamously---known, we combine both in a new context; why? what do we get from that?
+
+\paragraph{Open-world vs. Closed-world}
+
+\paragraph{Patch formalism}
+We do not really know if our patch formalism is sufficient; what if you want to plug another formalism; is there anything missing?
+We don’t care how patches are obtained. Diff is \emph{a} way to get there (as in the Rascal implementation), but obtaining the list of changes through other means (e.g., a transaction on a tree editor in EMF) is just as valid.
+
+\paragraph{Automatic shape generation}
+It may or may not be possible to automatically generate a shape from another.
+In our prototype implementation, we are able to Ecore $\leftrightarrow$ Rascal.
+
+\paragraph{Towards collaborative modeling}
+Our dispatch is braindead. A smarter dispatch mechanism would enable collaborative editing, distributed synchronization, \etc;
+We need a mechanism to valid produced Patches and their interpretations to detect desynchronization of incarnations (what should we do then? roll back? fix Patch?)
+
+\paragraph{Challenges of internal DSLs}
+Transforming context-heavy Java ASTs is challenging; our tool is stupid in that respect; DIY.
+
+\paragraph{Towards metamorphic DSLs}
+We view this initial contribution as a first step towards \emph{metamorphic DSLs}~\cite{acher2014metamorphic}.
+
+\paragraph{LSP \& Monto}

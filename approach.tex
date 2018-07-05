@@ -57,12 +57,6 @@ The key idea is that every change occuring on one incarnation is shipped to all 
 When a change occurs on one incarnation, as the result of a user edit or following an execution step of an interpreter, for instance, the LV hosting this incarnation generates a \patch describing the change as a set of CRUD-like operations.
 In our prototype implementation, the structure of this patch is prescribed by the Rascal ADT shown in \Cref{lst:delta-adt}.
 
-\begin{enumerate}
-	\item Synchronize the various in-memory representations of the same model;
-	\item Allow every LV to maintain the extra information it needs to properly work (layout information in graphical and textual editors, runtime state, AST context, \etc);
-	\item From 1. and 2., it follows that the synchronization must be incremental.
-\end{enumerate}
-
 \subsection{Projection of language}
 Whenever an incarnation of a model is updated, it produces a patch that is shipped to \prism.
 \prism then propagates the patch to every other incarnation of the same model using a simple matrix that keeps track of which model every incarnation is a projection of.
