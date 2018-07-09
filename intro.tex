@@ -16,7 +16,7 @@ From the language designer's point of view, however, every LV has its own streng
 The ecosystem around EMF excels in the definition of, for instance, graphical editors and persistence frameworks for large models, while the Rascal environment excels in the definition of, for instance, interpreters and refactoring tools.
 %On the other hand, the flexibility of manipulating the concepts of a DSL through a fluent API, using the capabilities of a general-purpose programming language, is unmatched.
 The benefits of various LVs are also visible from the language users' point of view.
-While domain experts may prefer to manipulate domain concepts through a dedicated syntax, advanced users (\eg~system integrators) may favor the flexibility of a fluent API in their favorite programming language to manipulate the very same abstractions.
+While domain experts may prefer to manipulate domain concepts through a dedicated syntax, advanced users (\eg~system integrators) may favor the flexibility of a fluent API in their favorite programming language to manipulate the very same constructs.
 %However, it is currently not possible to \emph{combine the strengths of multiple LV to engineer a single DSL}.
 %\td{Why?}
 
@@ -35,7 +35,7 @@ Using today's techniques, it is possible to define the same FSM language in thes
 It is not possible, however, to apply the tools of a given LV on the models created in another LV---for instance, animating a FSM model written in EMF using the Rascal interpreter, or synchronizing a textual FSM model in Rascal with its equivalent incarnation as a Java AST.
 Achieving this goal requires to \emph{synchronize the diverse in-memory representations of the same model in different LVs}; for instance to let the Rascal interpreter update its in-memory representation of an FSM model after each execution step and synchronize it with the in-memory representation of the same model in EMF.
 
-In this paper, we envision a language engineering approach enabling (i) language designers to combine tools from multiple vehicles to engineer a single DSL and (ii) language users to manipulate their abstractions in the most appropriate shape.
+In this paper, we envision a language engineering approach enabling (i) language designers to combine tools from multiple vehicles to engineer a single DSL and (ii) language users to manipulate language constructs in the most appropriate shape.
 %We endeavor to show \emph{how to break down the barriers between different vehicles so that language designers can combine the strengths of each in the engineering of a single DSL, and language users can synchronize their models across various shapes}.
 %\emph{Metamorphic synchronization} refers to the possibility of synchronizing different incarnations of the same model in different shapes of a language, \ie~in different vehicles.
 %As different vehicles rely on radically different theories, a successful approach for bridging them must thus \emph{align} \td{!no!} them in some way.
