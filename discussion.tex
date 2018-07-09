@@ -2,20 +2,24 @@
 \label{sec:discussion}
 From the language designers and users points of view, the rigidity of SLE must be fought.
 In this paper, we have stressed the importance of shape-diverse DSLs and have proposed a first prototype approach, \prism, towards this vision.
-Below, we list some open questions that arose during our first experiments, as well as a list of research problems to address in the future.
+Below, we list some open questions that arose during our experiments, as well as a list of research problems to address in the future.
 
 \paragraph{Open-world vs. Closed-world}
+Implementers of a synchronization mechanism for shape-diverse DSLs may opt for the closed-world or open-world assumption.
+In the former, one assumes that all LVs are known beforehand, while in the latter new LVs may be connected at any point in time.
+Although the closed-world assumption eases the definition of a common patch formalism on which every LV agree, it hampers evolution and adaptability.
 
 \paragraph{Patch formalism}
 We do not really know if our patch formalism is sufficient; what if you want to connect another formalism; is there anything missing?
 We don’t care how patches are obtained. Diff is \emph{a} way to get there (as in the Rascal implementation), but obtaining the list of changes through other means (e.g., a transaction on a tree editor in EMF) is just as valid.
+It should be possible to generate shapes from a common language definition, or generate a shape from another one (\eg~grammar to API generation~\cite{IThinkGPCEHadAPaperOnThat}).
 
 \paragraph{Automatic shape generation}
 It may or may not be possible to automatically generate a shape from another.
 In our prototype implementation, we are able to Ecore $\leftrightarrow$ Rascal.
 
 \paragraph{Towards collaborative modeling}
-Our dispatch is braindead. A smarter dispatch mechanism would enable collaborative editing, distributed synchronization, \etc;
+A smarter dispatch mechanism would enable collaborative editing, distributed synchronization, \etc;
 We need a mechanism to valid produced Patches and their interpretations to detect desynchronization of incarnations (what should we do then? roll back? fix Patch?)
 
 \paragraph{Challenges of internal DSLs}
