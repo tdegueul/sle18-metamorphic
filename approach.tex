@@ -45,6 +45,13 @@ The LV has to interpret this notifying patch to update its own incarnation of th
 The interpretation follows the edit script and for each operation applies a change on the incarnation of the model.
 
 \td{+ a paragraph on what does the dispatch do \emph{exactly}: no parallel edits, \etc}
+\prism connects LVs and provides a dispatch mechanism to exchange patches between incarnations of a same model.
+On the reception of a patch describing changes on an incarnation of a model, \prism looks at the corresponding model to find other incarnations of the same model.
+The received patch is then copied and sent to other incarnations of the model.
+The lookup is implemented by a matrix internal to \prism linking models to their incarnations. This matrix is kept updated by connected LVs declaring which incarnations of which model they manage.
+\prism addresses the synchronization of different incarnations of same models that is a complementary problem of the collaborative edition.
+Our approach only deals with sequential edition of incarnations and thus complementary work on concurrency in our dispatch mechanism could allow collaborative edition scenarios.
+
 \td{Highlight incrementality, \ie~we're not Xtext, $\neq$ full de-/re-serialization}
 
 \begin{lstlisting}[label=lst:delta-adt, caption={CRUD-like patch definition in Rascal.}, language=Rascal, float=tb]
