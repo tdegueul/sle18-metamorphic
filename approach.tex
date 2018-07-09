@@ -1,8 +1,11 @@
 \section{Synchronizing Shapes with \prism}
 \label{sec:prism}
 
-%\td{Languages aren't actually projected (they could, but not our focus).}
-%\td{I do not get the sectioning. Actually I would rename Section 2 to something else (conceptual something\dots), and rename 2.1 as Section 3 with current Section 2 title without subsections}
+\Cref{fig:prism} depicts our approach to the problem problem of synchronizing shapes of a language, \prism.
+The key idea is that every change occuring on one incarnation is shipped to all other incarnations of the same model in the form of a \patch.
+\prism keeps track of a matrix that associates every ``conceptual'' model to its incarnations in various LVs.
+When a change occurs on one incarnation, as the result of a user edit or following an execution step of an interpreter, for instance, the LV hosting this incarnation generates a \patch describing the change as a set of CRUD-like operations.
+In our prototype implementation, the structure of this patch is prescribed by the Rascal ADT shown in \Cref{lst:delta-adt}.
 
 On the edition of an incarnation of a model, its containing LV creates a patch describing the changes. The LV ships the patch to \prism, which then propagates the patch to every other incarnation of the same model. \prism use a simple matrix that keeps track of the associations between models and their incarnations in various LVs.
 Every LV is then responsible for updating its own incarnation by interpreting the patch.
@@ -24,6 +27,7 @@ On the EMF LV, for instance, the patch is interpreted as a set of changes that i
 It is important to note that each LV may want to preserve certain information across the patches that are specific to the LV.
 A textual editor in Rascal, for instance, needs to keep some of the parsing information to maintain layout whenever patches are applied.
 So it should be possible to apply the patch while maintaining the extra information specific to a given LV.
+Intuitively, our approach supposes that all the information that does not relate to the constructs of a language is ``extra'' and therefore escape the synchronization. \td{FIXME}
 
 Automatically generating language implementations in different LV is beyond the scope of this paper.\footnote{Indeed, this would actually require to build some kind of BX between all AS formalisms; so, nope!} Instead, given various shapes of a language, implemented by hand, we provide the means to automatically synchronize the projections of a model.
 
