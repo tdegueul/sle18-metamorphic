@@ -36,6 +36,14 @@ Automatically generating language implementations in different LV is beyond the 
 Instead, given various shapes of a language, implemented by hand, we provide the means to automatically synchronize the projections of a model.
 
 \td{Write a paragraph on ``connecting a LV $\Leftrightarrow$ implementing produce/apply patch''}
+Connecting a LV to \prism consist of producing and interpretting patches for a language.
+A LV has the task of watching changes happening on a incarnation of a model conform to a targeted language and notifying \prism.
+The LV describes the changes in a patch. The patch is an edit script where each operation follows the CRUD-like patch definition.
+After the production of the patch the LV has to notify the \prism.
+In the opposite way a LV can be notified by a patch from the \prism that a change occured in the model.
+The LV has to interpret this notifying patch to update its own incarnation of the model.
+The interpretation follows the edit script and for each operation applies a change on the incarnation of the model.
+
 \td{+ a paragraph on what does the dispatch do \emph{exactly}: no parallel edits, \etc}
 \td{Highlight incrementality, \ie~we're not Xtext, $\neq$ full de-/re-serialization}
 
