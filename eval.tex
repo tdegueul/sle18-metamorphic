@@ -54,7 +54,7 @@ class Trans {
 		\end{lstlisting}
 		\caption{Java API}
 	\end{subfigure}
-	\caption{Three shapes of an FSM language; the corresponding incarnations are those depicted in \Cref{fig:motivating-fsm}}
+	\caption{Three shapes of an FSM language; the corresponding incarnations are those depicted in \Cref{fig:motivating-fsm}.}
 	\label{fig:3fsms}
 \end{figure}
 
@@ -64,7 +64,7 @@ We built the Java API following a simple convention, so that we can easily pinpo
 
 \prism is used to bridge these different shapes.
 Whenever an incarnation of the FSM model is updated, the LV in which the change happens produces a patch (\cf\Cref{lst:delta-adt}) that is shipped to the other LVs.
-Every LV interpret the patch in its own way to keep its incarnation updated, accounting for the extra information it has to manage (\eg~layouts of the textual and graphical editors).
+Every LV interprets the patch in its own way to keep its incarnation updated, accounting for the extra information it has to manage (\eg~layouts of the textual and graphical editors).
 A simple matrix, internal to \prism, keeps track of which model each incarnation is projecting to route the patch to the right incarnation.
 
 %Rascal is providing a textual editor, Ecore provides a graphical editor and we used the Java editor for the fluent API.
@@ -73,10 +73,10 @@ A simple matrix, internal to \prism, keeps track of which model each incarnation
 %We also observe some de-synchronization happening due to the partially unaligned FSM implementation in Java.
 
 While the Rascal and EMF shapes synchronize seamlessly, we noticed a number of problems with the Java API.
-As the Java API inherits the (domain-agnostic) tooling of Java itself, it lacks the domain knowledge necessary to generate correct-by-construction patches.
+As the Java API inherits the (domain-agnostic) tooling of Java itself, it lacks the domain knowledge necessary to always generate correct patches.
 Due to the lack of domain-specific static semantics, a well-formed Java program may indeed produce an ill-formed FSM that cannot be interpreted by the other shapes.
 Besides, our prototype implementation does not account for complex string manipulation when invoking the API or use of variables.
-However, we believe that enough engineering effort spent on the Java API would lead to a flawless experience even in this case.
+However, we believe that these are purely engineering concerns and that enough effort spent on the Java API shape would provide a flawless experience.
 
 %The Java fluent API shape tends to break more easily the synchronization of their incarnations of models than the other shapes.
 %Indeed this shape of FSM language is an embedded language and has to rely on the host language for both the tooling and the expressiveness.
