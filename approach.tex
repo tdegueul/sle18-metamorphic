@@ -14,9 +14,6 @@ Every LV is then responsible for updating its own incarnation by interpreting th
 	\label{fig:prism}
 \end{figure}
 
-The key underlying idea of our approach is to provide the capability, at any time, to ``project'' a given model in any of its shapes and to synchronize those shapes whenever one of them is updated.
-We enable the projection of a given model as an ADT value, to be manipulated in the Rascal LV, or as an Ecore model, to be manipulated in the EMF LV.
-
 Our approach keeps the LV fully independent and builds a communication bus between them.
 Both representations of the same model in various LV are kept in memory to allow online synchronization of the same models manipulated by different stakeholders in different shapes.
 When a changes occurs on either side, this LV is responsible for generating a \emph{patch} (aka. \de or edit script~\cite{rozen2017towards}), that stores the changes on the model that have been realized on this LV.
