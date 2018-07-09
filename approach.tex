@@ -1,11 +1,10 @@
 \section{Synchronizing Shapes with \prism}
 \label{sec:prism}
 
-\td{Languages aren't actually projected (they could, but not our focus).}
-\td{I do not get the sectioning. Actually I would rename Section 2 to something else (conceptual something\dots), and rename 2.1 as Section 3 with current Section 2 title without subsections}
+%\td{Languages aren't actually projected (they could, but not our focus).}
+%\td{I do not get the sectioning. Actually I would rename Section 2 to something else (conceptual something\dots), and rename 2.1 as Section 3 with current Section 2 title without subsections}
 
-On the edition of an incarnation of a model, its containing LV creates a patch describing the changes and ships its to \prism.
-\prism then propagates the patch to every other incarnation of the same model using a simple matrix that keeps track of which model every incarnation is a projection of.
+On the edition of an incarnation of a model, its containing LV creates a patch describing the changes. The LV ships the patch to \prism, which then propagates the patch to every other incarnation of the same model. \prism use a simple matrix that keeps track of which model every incarnation is a projection of.
 Every LV is then responsible for updating its own incarnation by interpreting the patch.
 
 \begin{figure}[bt]

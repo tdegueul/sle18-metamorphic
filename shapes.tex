@@ -55,5 +55,5 @@ Every LV should be able to update its own incarnation while maintaining this ext
 \Cref{fig:prism} depicts our approach to this problem, \prism.
 The key idea is that every change occuring on one incarnation is shipped to all other incarnations of the same model in the form of a \patch.
 \prism keeps track of a matrix that associates every ``conceptual'' model to its incarnations in various LVs.
-When a change occurs on one incarnation, as the result of a user edit or following an execution step of an interpreter, for instance, the LV hosting this incarnation generates a \patch describing the change as a set of CRUD-like operations.
+When a change occurs on one incarnation, as the result of a user edit or following an execution step of an interpreter, for instance, the LV hosting this incarnation produces a \patch describing the change as a set of CRUD-like operations.
 In our prototype implementation, the structure of this patch is prescribed by the Rascal ADT shown in \Cref{lst:delta-adt}.
