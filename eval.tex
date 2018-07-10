@@ -2,7 +2,7 @@
 \label{sec:eval}
 
 To illustrate \prism, we built a shape-diverse FSM language conjointly in Rascal, EMF, and Java.
-\Cref{fig:3fsms} depicts the (manual) implementation of the abstract syntax of this FSM language in the three LVs.\footnote{A demonstration of this example is available on the companion webpage:~\url{https://github.com/fcoulon/prism/}}
+\Cref{fig:3fsms} depicts the implementation of the abstract syntax of this FSM language in the three LVs.\footnote{The implementation of \prism and the FSM example are available on a companion webpage:~\url{https://github.com/fcoulon/prism/}}
 The corresponding incarnations are given in \Cref{fig:motivating-fsm}.
 
 \begin{figure}[bt]
@@ -59,8 +59,8 @@ class Trans {
 \end{figure}
 
 We use Rascal to define a textual editor and a simple transformation that inserts a new state in a machine.
-We use EMF to define two graphical editors:~a classical tree editor and a domain-specific representation with Sirius.
-We built the Java API following a simple convention, so that we can easily pinpoint which parts of the Java AST have changed (to compute a patch) or need to be updated (to apply a patch).
+We use EMF to define two graphical editors:~a classical tree editor and a domain-specific representation with Sirius.\footnote{\url{https://www.eclipse.org/sirius/}}
+We build the Java API following a simple systematic convention, so that we can easily pinpoint which parts of the Java AST have changed (to compute a patch) or need to be updated (to apply a patch).
 
 \prism is used to bridge these different shapes.
 Whenever an incarnation of the FSM model is updated, the LV in which the change happens produces a patch (\cf\Cref{lst:delta-adt}) that is shipped to the other LVs.
