@@ -1,14 +1,14 @@
 \section{Synchronizing Incarnations with \prism}
 \label{sec:prism}
 
-\td{Mention the role of identity preservation somewhere, and why we exchange IDs in the patches}
-
-\Cref{fig:prism} depicts our prototype approach to the problem of synchronizing various incarnations of a model:~\prism.
-The key idea is that every change occuring on one incarnation is shipped to all other incarnations of the same model in the form of a \patch.
-\prism keeps track of a matrix that associates every ``conceptual'' model to its incarnations in various LVs.
-When a change occurs on one incarnation, as the result of a user edit or following an execution step of an interpreter, for instance, the LV hosting this incarnation generates a \patch describing the change as a set of CRUD-like operations.
-In our prototype implementation, the structure of this patch is prescribed by the Rascal ADT shown in \Cref{lst:delta-adt}, largely inspired by the ``edit scripts'' proposed by \citeauthor{rozen2017towards}~\cite{rozen2017towards}.
-Essentially, patches consist of a set of operations attached to particular elements of the model.
+\Cref{fig:prism} depicts our prototype approach to the problem of synchronizing various incarnations of a model, \prism.
+Our approach keeps the LVs fully independent and uses \prism as a communication bus between them.
+The key idea is that every change occuring on one incarnation is shipped to all other incarnations of the same model in the form of a \emph{patch}.
+\prism keeps track of a matrix that associates every conceptual model to its incarnations in various LVs.
+When a change occurs on one incarnation, for instance resulting from a user edit or an execution step of an interpreter, the LV hosting this incarnation generates a patch describing the change as a set of CRUD-like operations.
+In our prototype implementation, the structure of this patch is prescribed by the Rascal ADT shown in \Cref{lst:delta-adt}, largely inspired by the \emph{edit scripts} used by \citeauthor{rozen2017towards}~\cite{rozen2017towards}.
+Essentially, patches consist of a set of operations attached to identities~\cite{klint2016model} that represent particular objects in the model.
+To ensure that every LV can apply the operations on the right elements, identities are preserved across LVs and, in our case, they are represented by URIs~\cite{berners2004uniform}.
 
 %On the edition of an incarnation of a model, its containing LV creates a patch describing the changes. The LV ships the patch to \prism, which then propagates the patch to every other incarnation of the same model. \prism use a simple matrix that keeps track of the associations between models and their incarnations in various LVs.
 %Every LV is then responsible for updating its own incarnation by interpreting the patch.
@@ -20,39 +20,47 @@ Essentially, patches consist of a set of operations attached to particular eleme
 	\label{fig:prism}
 \end{figure}
 
-Our approach keeps the LV fully independent and builds a communication bus between them.
-Both representations of the same model in various LV are kept in memory to allow online synchronization of the same models manipulated by different stakeholders in different shapes.
-When a changes occurs on either side, this LV is responsible for generating a \emph{patch} (aka. \de or edit script~\cite{rozen2017towards}), that stores the changes on the model that have been realized on this LV.
-The communication bus then ships this patch to all the other LVs.
-Every LV interprets the patch in its own way to keep the representation synchronized.
-On the EMF LV, for instance, the patch is interpreted as a set of changes that impact an Ecore model, while on the Rascal LV it is interpreted as a set of changes that impact a value conforming to the ADT defining the AS of the language.
 
-It is important to note that each LV may want to preserve certain information across the patches that are specific to the LV.
+%Representations of the same model in various LVs are kept in memory to enable online synchronization of the same models manipulated by different stakeholders in different shapes.
+%When a changes occurs on either incarnation, the hosting LV is responsible for generating the corresponding \emph{patch}.
+%The communication bus then ships this patch to all the other LVs that hold an alternative incarnation of this model.
+% (aka. \de or edit script~\cite{rozen2017towards}), that stores the changes on the model that have been realized on this LV.
+
+Every LV then interprets the patch in its own way to keep the representation synchronized.
+In EMF, for instance, the patch is interpreted as a set of changes that impact an Ecore model, while in Rascal it is interpreted as a set of changes that impact an ADT value.
+
+As mentioned earlier, each LV may want to preserve extra shape-specific information across the patches.
 A textual editor in Rascal, for instance, needs to keep some of the parsing information to maintain layout whenever patches are applied.
 So it should be possible to apply the patch while maintaining the extra information specific to a given LV.
-Intuitively, our approach supposes that all the information that does not relate to the constructs of a language is ``extra'' and therefore escape the synchronization. \td{FIXME}
+Intuitively, our approach supposes that all the information that does not directly relate to the constructs of a language is ``extra'' and therefore should not be part of the patch itself.
 
-Automatically generating language implementations in different LV is beyond the scope of this paper.
-Instead, given various shapes of a language, implemented by hand, we provide the means to automatically synchronize the projections of a model.
+%Automatically generating language implementations in different LV is beyond the scope of this paper.
+%Instead, given various shapes of a language, implemented by hand, we provide the means to automatically synchronize the projections of a model.
 
-\td{Write a paragraph on ``connecting a LV $\Leftrightarrow$ implementing produce/apply patch''}
-Connecting a LV to \prism consist of producing and interpreting patches for a language.
-A LV has the task of watching changes happening on a incarnation of a model conform to a targeted language and notifying \prism.
-The LV describes the changes in a patch. The patch is an edit script where each operation follows the CRUD-like patch definition.
-After the production of the patch the LV has to notify the \prism.
-In the opposite way a LV can be notified by a patch from the \prism that a change occurred in the model.
-The LV has to interpret this notifying patch to update its own incarnation of the model.
-The interpretation follows the edit script and for each operation applies a change on the incarnation of the model.
+New LVs can be connected to \prism by implementing a simple interface that consists of two operations (i) \emph{produce} which creates a patch materializing the changes on an incarnation and notifies \prism, and (ii) \emph{apply} which receives a patch from \prism and interprets it to update an incarnation, taking into account the specificities of the LV.
+The way changes are detected in an incarnation and patches are produced is not prescribed by our approach.
+For instance, our Rascal implementation computes patches from a diff between two ADT values, while our EMF implementation captures the result of transactions on an Ecore model to produce the patches.
+%Connecting a LV to \prism consist of producing and interpreting patches for a language.
+%A LV has the task of watching changes happening on a incarnation of a model conform to a targeted language and notifying \prism.
+%The LV describes the changes in a patch. The patch is an edit script where each operation follows the CRUD-like patch definition.
+%After the production of the patch the LV has to notify the \prism.
+%In the opposite way a LV can be notified by a patch from the \prism that a change occurred in the model.
+%The LV has to interpret this notifying patch to update its own incarnation of the model.
+%The interpretation follows the edit script and for each operation applies a change on the incarnation of the model.
 
-\td{+ a paragraph on what does the dispatch do \emph{exactly}: no parallel edits, \etc}
-\prism connects LVs and provides a dispatch mechanism to exchange patches between incarnations of a same model.
-On the reception of a patch describing changes on an incarnation of a model, \prism looks at the corresponding model to find other incarnations of the same model.
-The received patch is then copied and sent to other incarnations of the model.
-The lookup is implemented by a matrix internal to \prism linking models to their incarnations. This matrix is kept updated by connected LVs declaring which incarnations of which model they manage.
-\prism addresses the synchronization of different incarnations of same models that is a complementary problem of the collaborative edition.
-Our approach only deals with sequential edition of incarnations and thus complementary work on concurrency in our dispatch mechanism could allow collaborative edition scenarios.
+A cornerstone artifact in \prism is the dispatch mechanism that routes patches to the appropriate incarnations.
+%\prism connects LVs and provides a dispatch mechanism to exchange patches between incarnations of a same model.
+When receiving a patch, \prism looks up its internal matrix to determine which other incarnations of the same model should be updated.
+%at the corresponding model to find other incarnations of the same model.
+The patch is then copied and routed accordingly.
+%The lookup is implemented by a matrix internal to \prism linking models to their incarnations. This matrix is kept updated by connected LVs declaring which incarnations of which model they manage.
+%\prism addresses the synchronization of different incarnations of same models that is a complementary problem of the collaborative edition.
+Our dispatch mechanism is currently limited.
+For instance, it does not account for concurrent edits on various incarnations of the same model.
+Scaling \prism to other scenarios that go beyond the scope of this paper, such as collaborative editing, remains an open problem.
+%Our approach only deals with sequential edition of incarnations and thus complementary work on concurrency in our dispatch mechanism could allow collaborative edition scenarios.
 
-\td{Highlight incrementality, \ie~we're not Xtext, $\neq$ full de-/re-serialization}
+%\td{Highlight incrementality, \ie~we're not Xtext, $\neq$ full de-/re-serialization}
 
 \begin{lstlisting}[label=lst:delta-adt, caption={CRUD-like patch definition in Rascal.}, language=Rascal, float=tb]
 @doc{A patch consists of a sequence of edits}
@@ -69,11 +77,3 @@ data Edit
   | create(str class) 
   | destroy();
 \end{lstlisting}
-
-It is important to note that ``projections'' have no relation whatsoever with projectional editing.
-A projection denotes the incarnation of a model in a particular shape of a language.
-In \Cref{fig:motivating-fsm}, the lower part depicts three projections of the same \texttt{Button} state machine model in three shapes of the FSM language.
-We use the term ``language'' to refer to the specification of a language independently from its realization in a given LV.
-A concrete implementation of a language is a ``shape''.
-An instance of a shape, \ie~a particular model in a particular LV, is a ``projection'' of a ``virtual'' model.
-Metamorphic synchronization refers to the ability to synchronize the projections of a given model for every shapes of a language.

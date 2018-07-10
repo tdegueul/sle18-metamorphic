@@ -21,7 +21,7 @@ A shape-diverse language $\mathcal{L}$ (\eg~the FSM language of \Cref{fig:motiva
 %A ``conceptual'' language $\mathcal{L}$ is materialized as a \emph{shape} $\mathcal{S}$ in a LV.
 Each $\mathcal{S}_i$ can therefore be seen as the implementation of $\mathcal{L}$ in LV\textsubscript{i}.
 As mentioned earlier, Ecore metamodels, ADT definitions, and Java APIs, along with their associated tooling, are examples of shapes.
-Similarly, a ``conceptual'' model $m$ that uses the constructs of $\mathcal{L}$ (\eg~the simple {\footnotesize \texttt{Button}} machine) is projected as an incarnation $\mathcal{I}_i$ conforming to the shape $\mathcal{S}_i$ in a LV\textsubscript{i}: an Ecore model, an ADT value, or a Java AST.
+Similarly, a ``conceptual'' model $m$ that uses the constructs of $\mathcal{L}$ (\eg~the simple {\footnotesize \texttt{Button}} machine) is projected\footnote{The notion of projection here is unrelated to the notion of projectional editing~\cite{voelter2015projecting} as there is no underlying AST.} as an incarnation $\mathcal{I}_i$ conforming to the shape $\mathcal{S}_i$ in a LV\textsubscript{i}: an Ecore model, an ADT value, or a Java AST.
 %\td{Not very proud of the ``conceptual''. Is ``abstract'' better? Any idea?}
 %\fc{Language Specification and Abstract Model?} 
 %As each shape manipulate models in its own formalism, all incarnations $I$ of the same model $m$ must remain synchronized.
