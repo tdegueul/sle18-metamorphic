@@ -1,9 +1,9 @@
-\section{Synchronizing Shapes with \prism}
+\section{Synchronizing Incarnations with \prism}
 \label{sec:prism}
 
 \td{Mention the role of identity preservation somewhere, and why we exchange IDs in the patches}
 
-\Cref{fig:prism} depicts our prototype approach to the problem of synchronizing shapes of a language, \prism.
+\Cref{fig:prism} depicts our prototype approach to the problem of synchronizing various incarnations of a model:~\prism.
 The key idea is that every change occuring on one incarnation is shipped to all other incarnations of the same model in the form of a \patch.
 \prism keeps track of a matrix that associates every ``conceptual'' model to its incarnations in various LVs.
 When a change occurs on one incarnation, as the result of a user edit or following an execution step of an interpreter, for instance, the LV hosting this incarnation generates a \patch describing the change as a set of CRUD-like operations.
@@ -16,7 +16,7 @@ Essentially, patches consist of a set of operations attached to particular eleme
 \begin{figure}[bt]
 	\centering
 	\includegraphics[width=.6\columnwidth]{figures/prism}
-	\caption{Using \prism to synchronize three incarnations of the same model. Here, a change occurs on Incarnation \#1 and the resulting patch is dispatched to Incarnation \#2 and \#3.}
+	\caption{Using \prism to synchronize three incarnations of the same model. Here, a change occurs on Incarnation \#1 and the resulting patch is shipped to Incarnation \#2 and \#3.}
 	\label{fig:prism}
 \end{figure}
 
