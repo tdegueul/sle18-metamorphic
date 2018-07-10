@@ -1,37 +1,44 @@
 \section{Open Questions \& Next Steps}
 \label{sec:discussion}
-From the language designers and users points of view, the rigidity of SLE must be fought.
-In this paper, we have stressed the importance of shape-diverse DSLs and have proposed a first prototype approach, \prism, towards this vision.
-Below, we list some open questions that arose during our experiments, as well as a list of research problems to address in the future.
+In this paper, with the objective of providing more flexibility to DSL designers and users, we have stressed the importance of shape-diverse DSLs and have proposed a first prototype approach, \prism, towards this vision.
+Below, we list some open questions that arose during our experiments, as well as possible next research steps in this direction.
 
 \paragraph{Open-world vs. Closed-world}
 Implementers of a synchronization mechanism for shape-diverse DSLs may opt for the closed-world or open-world assumption.
 In the former, one assumes that all LVs are known beforehand, while in the latter new LVs may be connected at any point in time, for instance using our \emph{produce/apply} interface for patches.
-Although the closed-world assumption eases the definition of a common patch formalism on which all LVs agree, it hampers evolution and adaptability.
-
-\paragraph{Patch formalism}
-We opted for patches in the form of edit scripts~\cite{rozen2017towards}.
-We do not really know if our patch formalism is sufficient:~what if you want to connect another formalism; is there anything missing?
-We don’t care how patches are obtained. Diff is \emph{a} way to get there (as in the Rascal implementation), but obtaining the list of changes through other means (e.g., a transaction on a tree editor in EMF) is just as valid.
-It should be possible to generate shapes from a common language definition, or generate a shape from another one (\eg~grammar to API generation~\cite{IThinkGPCEHadAPaperOnThat}).
+Although the closed-world assumption eases the definition of a common patch formalism on which all LVs agree, it hampers evolution and adaptability of the communication bus.
 
 \paragraph{Automatic shape generation}
-It may or may not be possible to automatically generate a shape from another.
-In our prototype implementation, we are able to Ecore $\leftrightarrow$ Rascal.
+In our evaluation (\Cref{sec:eval}), we handcrafted every shape of the FSM language in Rascal, EMF, and Java.
+It may however be possible to automatically generate shapes of a language, either from a common language definition or from a shape to another.
+As an illustration, researchers have studied the generation of fluent APIs from BNF-like grammar definitions~\cite{nakamaru2017silverchain}.
+Although automatic shape generation is not necessary for shape-diverse DSLs, future research in this area would greatly ease their adoption.
+
+\paragraph{Patch formalism}
+In \prism, we opted for patches in the form of edit scripts~\cite{rozen2017towards} and were successfully able to bridge three distinct LVs relying on radically different theories.
+We cannot conclude however that the information contained in such patches is sufficient; depending on the abstract syntax formalism used by a given LV, the information that the patch should carry may vary.
+Following the open-world assumption especially, this raises a number of problem regarding the evolution of patches when new LVs are connected to the communication bus.
 
 \paragraph{Towards collaborative modeling}
-A smarter dispatch mechanism would enable collaborative editing, distributed synchronization, \etc;
-We need a mechanism to valid produced Patches and their interpretations to detect desynchronization of incarnations (what should we do then? roll back? fix Patch?)
+As mentioned in \Cref{sec:approach}, \prism does not account for concurrent edits of different incarnations of the same model.
+It does not account either for a possible distribution of the shapes and incarnations on the network, or the possibility of rollbacks.
+Nonetheless, we believe that the idea of exchanging patch would be a good fit for more complex scenarios such as collaborative and distributed editing of models by different stakeholders under different shapes.
+A key step towards this direction would be to improve the dispatch mechanism to scale to these scenarios.
 
 \paragraph{Challenges of internal DSLs}
-Transforming context-heavy Java ASTs is challenging; our tool is stupid in that respect; DIY.
+We encountered a number of problems when engineering the Java shape of our DSL (\Cref{sec:eval}).
+These are mainly due to the fact that the domain-specific static semantics is lost when manipulating Java ASTs using domain-agnostic Java tooling.
+Besides, it may be hard to statically analyze the Java code manipulating models to account for reflexivity, string manipulation, or use of variables.
+Future work must investigate what are the limits imposed by internal DSLs in this context.
+
 
 \paragraph{Towards metamorphic DSLs}
 We view this initial contribution as a first step towards \emph{metamorphic DSLs}~\cite{acher2014metamorphic}.
+Beyong the ideas presented in this paper, the notion of metamorphic DSL envisions self-adaptable languages that automatically adapt their shapes and the associated IDE according to a particular usage or task.
+How self-adaptability could be brought to life remains an open question.
 
 \paragraph{LSP \& Monto}
-
+\dots
 
 \paragraph{Others}
-Our approach goes beyond what is described here. \eg synchronizing an outline view, a debugger, live modeling, w/e; also, we are AS-centric, but one could imagine something radically different;
-Delta/edit scripts are known (ref?), ``pivot'' formalisms are---infamously---known, we combine both in a new context; why? what do we get from that?
+Delta/edit scripts are known, ``pivot'' formalisms are---infamously---known, we combine both in a new context; why? what do we get from that?
