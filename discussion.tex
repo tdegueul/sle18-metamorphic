@@ -20,7 +20,7 @@ We cannot conclude however that the information contained in such patches is suf
 Following the open-world assumption especially, this raises a number of problem regarding the evolution of patches when new LVs are connected to the communication bus.
 
 \paragraph{Towards collaborative modeling}
-As mentioned in \Cref{sec:approach}, \prism does not account for concurrent edits of different incarnations of the same model.
+As mentioned in \Cref{sec:prism}, \prism does not account for concurrent edits of different incarnations of the same model.
 It does not account either for a possible distribution of the shapes and incarnations on the network, or the possibility of rollbacks.
 Nonetheless, we believe that the idea of exchanging patch would be a good fit for more complex scenarios such as collaborative and distributed editing of models by different stakeholders under different shapes.
 A key step towards this direction would be to improve the dispatch mechanism to scale to these scenarios.
@@ -35,10 +35,7 @@ Future work must investigate what are the limits imposed by internal DSLs in thi
 \paragraph{Towards metamorphic DSLs}
 We view this initial contribution as a first step towards \emph{metamorphic DSLs}~\cite{acher2014metamorphic}.
 Beyond the ideas presented in this paper, the notion of metamorphic DSL envisions self-adaptable languages that automatically adapt their shapes and the associated IDE according to a particular usage or task.
-How self-adaptability could be brought to life remains an open question.
-
-\paragraph{LSP \& Monto}
-\dots
+How self-adaptability of languages could be brought to life remains an open question.
 
 \paragraph{Others}
 Delta/edit scripts are known, ``pivot'' formalisms are---infamously---known, we combine both in a new context; why? what do we get from that?
