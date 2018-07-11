@@ -37,7 +37,7 @@ Intuitively, our approach supposes that all the information that does not direct
 %Automatically generating language implementations in different LV is beyond the scope of this paper.
 %Instead, given various shapes of a language, implemented by hand, we provide the means to automatically synchronize the projections of a model.
 
-New LVs can be connected to \prism by implementing a simple interface that consists of two operations (i) \emph{produce} which creates a patch materializing the changes on an incarnation and notifies \prism, and (ii) \emph{apply} which receives a patch from \prism and interprets it to update an incarnation, taking into account the specificities of the LV.
+New LVs can be connected to \prism by implementing a simple interface that consists of two operations, namely (i) \emph{produce} which creates a patch materializing the changes on an incarnation and notifies \prism, and (ii) \emph{apply} which receives a patch from \prism and interprets it to update an incarnation, taking into account the specificities of the LV.
 The way changes are detected in an incarnation and patches are produced is not prescribed by our approach.
 For instance, our Rascal implementation computes patches from a diff between two ADT values, while our EMF implementation captures the result of transactions on an Ecore model to produce the patches.
 %Connecting a LV to \prism consist of producing and interpreting patches for a language.
@@ -55,9 +55,7 @@ When receiving a patch, \prism looks up its internal matrix to determine which o
 The patch is then copied and routed accordingly.
 %The lookup is implemented by a matrix internal to \prism linking models to their incarnations. This matrix is kept updated by connected LVs declaring which incarnations of which model they manage.
 %\prism addresses the synchronization of different incarnations of same models that is a complementary problem of the collaborative edition.
-Our dispatch mechanism is currently limited.
-For instance, it does not account for concurrent edits on various incarnations of the same model.
-Scaling \prism to other scenarios that go beyond the scope of this paper, such as collaborative editing, remains an open problem.
+Our current implementation of the dispatch mechanism is kept simple, and we left for future work the support of concurrent edits on different incarnations of the same model. This would scale \prism to advanced scenarios that go beyond the scope of this paper, such as collaborative editing.
 %Our approach only deals with sequential edition of incarnations and thus complementary work on concurrency in our dispatch mechanism could allow collaborative edition scenarios.
 
 %\td{Highlight incrementality, \ie~we're not Xtext, $\neq$ full de-/re-serialization}

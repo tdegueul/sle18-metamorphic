@@ -33,7 +33,7 @@ Rascal could be used to develop its interpreter, a set of refactoring tools (\eg
 
 Using today's techniques, it is possible to define the same FSM language in these three LVs separately.
 It is not possible, however, to apply the tools of a given LV on the models or programs created in another LV---for instance, animating a FSM model written in EMF using the Rascal interpreter, or synchronizing a textual FSM model in Rascal with its equivalent incarnation as a Java AST.
-Achieving this goal requires to \emph{synchronize the diverse in-memory representations of the same model in different LVs}; for instance to let the FSM interpreter written in Rascal update its in-memory representation of an FSM model after each execution step and synchronize it with the in-memory representation of the same model in EMF for animation and simulation purposes.
+Achieving this goal requires to \emph{synchronize the diverse in-memory representations of the same model in different LVs}; for instance to let the FSM interpreter written in Rascal update its in-memory representation of an FSM model after each execution step and synchronize it with the in-memory representation of the same model in EMF for animation purpose.
 
 In this paper, we envision a language engineering approach enabling (i) language designers to combine tools from multiple LVs to engineer diverse shapes for a single DSL and (ii) language users to manipulate language constructs in the most appropriate shape.
 %We endeavor to show \emph{how to break down the barriers between different vehicles so that language designers can combine the strengths of each in the engineering of a single DSL, and language users can synchronize their models across various shapes}.
