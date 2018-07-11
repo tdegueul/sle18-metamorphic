@@ -2,7 +2,7 @@
 \label{sec:shapes}
 
 The cornerstone artifact defining a DSL in any LV is its abstract syntax.
-The way abstract syntax is expressed differs drastically from one LV to another: GEMOC~\cite{bousse2016execution} and Xtext~\cite{bettini2016implementing} use Ecore metamodels~\cite{steinberg2008emf}; MPS~\cite{voelter2014generic} uses \emph{concepts}; Rascal~\cite{klint2010easy} uses Algebraic Data Types (ADT); \etc.
+The way abstract syntax is expressed differs drastically from one LV to another: GEMOC~\cite{bousse2016execution} and Xtext~\cite{bettini2016implementing} use Ecore metamodels~\cite{steinberg2008emf}, MPS~\cite{voelter2014generic} uses \emph{concepts}, Rascal~\cite{klint2010easy} uses Algebraic Data Types (ADT), \etc.
 Language embedding techniques, on the other hand, use the constructs of an host language to materialize the constructs of a DSL in the host language itself (\eg~a set of Java classes).
 Concrete models are then built as instances of the corresponding abstract syntax formalism:~Ecore models, ADT values, Java ASTs, \etc.
 The tools defined within a particular LV (an interpreter in Rascal, an editor in EMF) manipulate models in the corresponding formalism (respectively, ADT values and Ecore models).
