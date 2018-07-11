@@ -6,7 +6,7 @@ The way abstract syntax is expressed differs drastically from one LV to another:
 Language embedding techniques, on the other hand, use the constructs of an host language to materialize the constructs of a DSL in the host language itself (\eg~a set of Java classes).
 Concrete models are then built as instances of the corresponding abstract syntax formalism:~Ecore models, ADT values, Java ASTs, \etc.
 The tools defined within a particular LV (an interpreter in Rascal, an editor in EMF) manipulate models in the corresponding formalism (respectively, ADT values and Ecore models).
-These formalisms radically differ in many ways~\cite{klint2016model}:~object-oriented vs. functional, graphs vs. trees, mutable ASG vs. immutable ASTs, cross-references vs. symbolic names, \etc.
+These formalisms radically differ in many ways~\cite{klint2016model}:~object-oriented vs. functional, graphs vs. trees, mutable vs immutable datatypes, cross-references vs. symbolic names, \etc.
 As LVs are developed by independent groups of people and rely on different underlying theories, it is neither possible nor desirable to establish a common foundation upon which all LVs would agree.
 
 \begin{figure}[bt]
@@ -30,13 +30,14 @@ Similarly, a ``conceptual'' model $m$ that uses the constructs of $\mathcal{L}$ 
 %Doing so however would close the world around the chosen set of LVs.
 %As every LV holds particular extra information on its incarnations, such as layout in an editor, runtime data for running models, or context information around API calls, the synchronization must be incremental.
 
-\td{<Check this paragraph>}
 %As each shape manipulates models in its own formalism, all incarnations $\mathcal{I}_i$ of the same model $m$ must remain synchronized.
-As a model is incarnated many times, all its incarnations $\mathcal{I}_i$ must remain synchronized.
-This synchronization mechanism must ensure two important properties.
-First, it must not close the world around a chosen set of LVs:~it should be possible to easily connect new LVs and shapes to meet new requirements from users and designers.
-This rules out any synchronization approach that would require to be defined for every pair $\langle LV, LV' \rangle$, such as bidirectional transformations.
+As the same model is incarnated many times, all its incarnations $\mathcal{I}_i$ must remain synchronized.
+This synchronization mechanism must ensure three important properties.
+%First, it must not close the world around a chosen set of LVs:~it should be possible to easily connect new LVs and shapes to meet new requirements from users and designers.
+%This rules out any synchronization approach that would require to be defined for every pair $\langle LV, LV' \rangle$, such as bidirectional transformations.
+First, it should be efficient.
+This rules out any synchronization mechanism that would require to do a full traversal or to serialize and deserialize the incarnations after every change.
 Second, it must account for any extra shape-specific information the various LVs have to maintain to function properly.
 Examples of such extra information include layout information in a textual or graphical editor, or runtime state in a simulation environment.
-Every LV should be able to update its own incarnation while maintaining this extra information.
-\td{</>}
+The synchronization mechanism must thus isolate the information that relates to the model itself from the information that is specific to a particular shape.
+Third, the synchronization mechanism must be language-agnostic, meaning it should not have to be implemented from scratch for every shape-diverse DSL.
