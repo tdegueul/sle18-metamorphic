@@ -2,7 +2,7 @@
 \label{sec:discussion}
 Based on our early experiments, we know list in this section some open questions, as well as possible next research steps in this direction.
 
-\paragraph{Open-world vs. Closed-world}
+\paragraph{Closed-world vs. Open-world}
 Implementers of a synchronization mechanism for shape-diverse DSLs may opt for the closed-world or open-world assumption.
 In the former, one assumes that all LVs are known beforehand, while in the latter new LVs may be connected at any point in time, for instance using our \emph{produce/apply} interface for patches.
 Although the closed-world assumption eases the definition of a common patch formalism on which all LVs agree, it hampers evolution and adaptability of the communication bus.
@@ -10,25 +10,26 @@ Although the closed-world assumption eases the definition of a common patch form
 \paragraph{Automatic shape generation}
 In our evaluation (\Cref{sec:eval}), we handcrafted every shape of the FSM language in Rascal, EMF, and Java.
 It may however be possible to automatically generate shapes of a language, either from a common language definition or from a shape to another.
-As an illustration, researchers have studied the generation of fluent APIs from BNF-like grammar definitions~\cite{nakamaru2017silverchain}.
+For instance, researchers have studied the generation of fluent APIs from BNF-like grammar definitions~\cite{nakamaru2017silverchain}.
 Although automatic shape generation is not necessary for shape-diverse DSLs, future research in this area would greatly ease their adoption.
 
 \paragraph{Patch formalism}
 In \prism, we opted for patches in the form of edit scripts~\cite{rozen2017towards} and were successfully able to bridge three distinct LVs relying on radically different theories.
 We cannot conclude however that the information contained in such patches is sufficient; depending on the abstract syntax formalism used by a given LV, the information that the patch should carry may vary.
 Following the open-world assumption especially, this raises a number of problem regarding the evolution of patches when new LVs are connected to the communication bus.
+Furthermore, if extra-information such as layout information has to be shared amongst various LVs, the patch formalism should be adapted accordingly.
 
 \paragraph{Towards collaborative modeling}
 As mentioned in \Cref{sec:prism}, \prism does not account for concurrent edits of different incarnations of the same model.
-It does not account either for a possible distribution of the shapes and incarnations on the network, or the possibility of rollbacks.
-Nonetheless, we believe that the idea of exchanging patch would be a good fit for more complex scenarios such as collaborative and distributed editing of models by different stakeholders under different shapes.
-A key step towards this direction would be to improve the dispatch mechanism to scale to these scenarios.
+It does not account either for a possible distribution of the shapes and incarnations on the network, or the possibility of conflicts.
+Nonetheless, we believe that the idea of exchanging patches would be a good fit for advanced scenarios such as collaborative and distributed editing of models by different stakeholders under different shapes.
+A key step towards this direction would be to improve the dispatch mechanism accordingly.
 
 \paragraph{Challenges of internal DSLs}
-We encountered a number of problems when engineering the Java shape of our DSL (\Cref{sec:eval}).
+We encountered a number of challenges when engineering the Java shape of our DSL (\Cref{sec:eval}).
 These are mainly due to the fact that the domain-specific static semantics is lost when manipulating Java ASTs using domain-agnostic Java tooling.
 Besides, it may be hard to statically analyze the Java code manipulating models to account for reflexivity, string manipulation, or use of variables.
-Future work must investigate what are the limits imposed by internal DSLs in this context.
+Future work must investigate what are the limits imposed by internal DSLs in this context, especially regarding the absence of domain-specific static semantics.
 
 
 \paragraph{Towards metamorphic DSLs}

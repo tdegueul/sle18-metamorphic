@@ -1,9 +1,9 @@
 \section{A Shape-Diverse FSM Language}
 \label{sec:eval}
 
-To illustrate \prism, we built a shape-diverse FSM language conjointly in Rascal, EMF, and Java.
+To illustrate \prism, we build a shape-diverse FSM language conjointly in Rascal, EMF, and Java.
 \Cref{fig:3fsms} depicts the implementation of the abstract syntax of this FSM language in the three LVs.\footnote{The implementation of \prism and the FSM example are available on a companion webpage:~\url{https://github.com/fcoulon/prism/}}
-The corresponding incarnations are given in \Cref{fig:motivating-fsm}.
+The corresponding incarnations are those given in \Cref{fig:motivating-fsm}.
 
 \begin{figure}[bt]
 	\centering
@@ -60,10 +60,10 @@ class Trans {
 
 We use Rascal to define a textual editor and a simple transformation that inserts a new state in a machine.
 We use EMF to define two graphical editors:~a classical tree editor and a domain-specific representation with Sirius.\footnote{\url{https://www.eclipse.org/sirius/}}
-We build the Java API following a simple systematic convention, so that we can easily pinpoint which parts of the Java AST have changed (to compute a patch) or need to be updated (to apply a patch).
+We build the Java API following a simple systematic convention, so as to easily pinpoint which parts of the Java AST have changed (to compute a patch) or need to be updated (to apply a patch).
 
 \prism is used to bridge these different shapes.
-Whenever an incarnation of the FSM model is updated, the LV in which the change happens produces a patch (\cf\Cref{lst:delta-adt}) that is shipped to the other LVs.
+Whenever an incarnation of the FSM model is updated, the LV in which the change happens produces a patch (\cf\Cref{lst:delta-adt}) that is shipped to the other LVs through the dispatch mechanism of \prism.
 Every LV interprets the patch in its own way to keep its incarnation updated, accounting for the extra information it has to manage (\eg~layouts within the textual and graphical editors).
 A simple matrix, internal to \prism, keeps track of which model each incarnation is projecting to route the patch to the right incarnation.
 

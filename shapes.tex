@@ -2,7 +2,7 @@
 \label{sec:shapes}
 
 The cornerstone artifact defining a DSL in any LV is its abstract syntax.
-The way abstract syntax is expressed differs drastically from one LV to another: GEMOC~\cite{bousse2016execution} and Xtext~\cite{bettini2016implementing} use Ecore metamodels~\cite{steinberg2008emf}, MPS~\cite{voelter2014generic} uses \emph{concepts}, Rascal~\cite{klint2010easy} uses Algebraic Data Types (ADT), \etc.
+The way abstract syntax is expressed differs drastically from one LV to another: GEMOC~\cite{bousse2016execution} and Xtext~\cite{bettini2016implementing} use Ecore metamodels~\cite{steinberg2008emf}, MPS uses \emph{concepts}~\cite{voelter2014generic}, Rascal~\cite{klint2010easy} uses Algebraic Data Types (ADT), \etc.
 Language embedding techniques, on the other hand, use the constructs of an host language to materialize the constructs of a DSL in the host language itself (\eg~a set of Java classes).
 Concrete models are then built as instances of the corresponding abstract syntax formalism:~Ecore models, ADT values, Java ASTs, \etc.
 The tools defined within a particular LV (an interpreter in Rascal, an editor in EMF) manipulate models in the corresponding formalism (respectively, ADT values and Ecore models).
@@ -17,11 +17,11 @@ As LVs are developed by independent groups of people and rely on different under
 \end{figure}
 
 \Cref{fig:concepts} gives an overview of the concept of shape-diverse language and the terminology we use throughout the paper.
-A shape-diverse language $\mathcal{L}$ (\eg~the FSM language of \Cref{fig:motivating-fsm}) is a language that is implemented in multiple LV through multiple shapes $\mathcal{S}_i$.
+A shape-diverse language $\mathcal{L}$ (\eg~the FSM language of \Cref{fig:motivating-fsm}) is a language that is implemented in multiple LVs through multiple shapes $\mathcal{S}_i$.
 %A ``conceptual'' language $\mathcal{L}$ is materialized as a \emph{shape} $\mathcal{S}$ in a LV.
 %Each $\mathcal{S}_i$ can therefore be seen as the implementation of $\mathcal{L}$ in LV\textsubscript{i}.
 As mentioned earlier, Ecore metamodels, ADT definitions, and Java APIs, along with their associated tooling, are examples of shapes.
-Similarly, a ``conceptual'' model $m$ that uses the constructs of $\mathcal{L}$ (\eg~the simple {\footnotesize \texttt{Button}} machine) is projected\footnote{The notion of projection here is unrelated to the notion of projectional editing~\cite{voelter2015projecting} as there is no underlying AST.} as an incarnation $\mathcal{I}_i$ conforming to the shape $\mathcal{S}_i$ in a LV\textsubscript{i}: an Ecore model, an ADT value, or a Java AST.
+Similarly, a ``conceptual'' model $m$ that uses the constructs of $\mathcal{L}$ (\eg~the simple {\footnotesize \texttt{Button}} machine) is projected\footnote{The notion of projection here is unrelated to the notion of projectional editing~\cite{voelter2015projecting} as there is no underlying AST to project from.} as an incarnation $\mathcal{I}_i$ conforming to the shape $\mathcal{S}_i$ in a LV: an Ecore model, an ADT value, or a Java AST.
 %\td{Not very proud of the ``conceptual''. Is ``abstract'' better? Any idea?}
 %\fc{Language Specification and Abstract Model?} 
 %As each shape manipulate models in its own formalism, all incarnations $I$ of the same model $m$ must remain synchronized.
@@ -31,7 +31,7 @@ Similarly, a ``conceptual'' model $m$ that uses the constructs of $\mathcal{L}$ 
 %As every LV holds particular extra information on its incarnations, such as layout in an editor, runtime data for running models, or context information around API calls, the synchronization must be incremental.
 
 %As each shape manipulates models in its own formalism, all incarnations $\mathcal{I}_i$ of the same model $m$ must remain synchronized.
-As the same model is incarnated many times, all its incarnations $\mathcal{I}_i$ must remain synchronized.
+As the same model is incarnated many times, each of its incarnations $\mathcal{I}_i$ must remain synchronized.
 This synchronization mechanism must ensure three important properties.
 %First, it must not close the world around a chosen set of LVs:~it should be possible to easily connect new LVs and shapes to meet new requirements from users and designers.
 %This rules out any synchronization approach that would require to be defined for every pair $\langle LV, LV' \rangle$, such as bidirectional transformations.
