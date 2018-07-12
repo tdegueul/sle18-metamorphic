@@ -65,7 +65,7 @@ We build the Java API following a simple systematic convention, so as to easily 
 \prism is used to bridge these different shapes.
 Whenever an incarnation of the FSM model is updated, the LV in which the change happens produces a patch (\cf\Cref{lst:delta-adt}) that is shipped to the other LVs through the dispatch mechanism of \prism.
 Every LV interprets the patch in its own way to keep its incarnation updated, accounting for the extra information it has to manage (\eg~layouts within the textual and graphical editors).
-%A simple matrix, internal to \prism, keeps track of which model each incarnation is projecting to route the patch to the right incarnation.
+A simple matrix, internal to \prism, keeps track of which model each incarnation is projecting to route the patch to the right incarnation.
 
 %Rascal is providing a textual editor, Ecore provides a graphical editor and we used the Java editor for the fluent API.
 %In our manipulation we were able to edit an incarnation of a model in one editor and see the change applied in others editors.

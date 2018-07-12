@@ -8,7 +8,7 @@ An alternative approach is Change Propagation of View Models
 by Logic Synthesis using SAT solvers~\cite{DBLP:conf/etaps/SemerathDHV16}, which propagate changes from models to views using traceability links. This is in contrast with our approach where the underlying model is not materialized and incarnations exchange patch each other.
 This patch represents the exact set of changes that occured on one incarnation.
 It allows to synchronize incarnations online efficiently without requiring serialization or a full traversal of any of the incarnation.
-%\prism keeps track of a matrix that associates every conceptual model to its incarnations in various LVs.
+\prism keeps track of a matrix that associates every conceptual model to its incarnations in various LVs.
 When a change occurs on one incarnation, for instance resulting from a user edit or an execution step of an interpreter, the LV hosting this incarnation generates a patch describing the change as a set of CRUD-like operations.
 In our prototype implementation, the structure of this patch is prescribed by the Rascal ADT shown in \Cref{lst:delta-adt}, largely inspired by the \emph{edit scripts} used by \citeauthor{rozen2017towards}~\cite{rozen2017towards}.
 Essentially, patches consist of a set of operations attached to identities~\cite{klint2016model} that represent particular objects in the model.
@@ -42,7 +42,7 @@ We discuss this point further in \Cref{sec:discussion}.
 %Automatically generating language implementations in different LV is beyond the scope of this paper.
 %Instead, given various shapes of a language, implemented by hand, we provide the means to automatically synchronize the projections of a model.
 
-New LVs can be connected to \prism by implementing two operations, (i) \emph{produce} which creates a patch materializing the changes on an incarnation and notifies \prism, and (ii) \emph{apply} which receives a patch from \prism and interprets it to update an incarnation, taking into account the specificities of the LV.
+New LVs can be connected to \prism by implementing a simple interface that consists of two operations, namely (i) \emph{produce} which creates a patch materializing the changes on an incarnation and notifies \prism, and (ii) \emph{apply} which receives a patch from \prism and interprets it to update an incarnation, taking into account the specificities of the LV.
 The way changes are detected in an incarnation and patches are produced is not prescribed by our approach.
 For instance, our Rascal implementation computes patches from a \emph{diff} operation between two ADT values, while our EMF implementation captures the result of transactions on an Ecore model to produce the patches.
 The produce and apply operations are implemented once for every LV and do not have to be re-implemented for every language.
