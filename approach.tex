@@ -31,7 +31,7 @@ To ensure that every LV can apply the operations on the right elements, identiti
 % (aka. \de or edit script~\cite{rozen2017towards}), that stores the changes on the model that have been realized on this LV.
 
 Every LV then interprets the patch in its own way to keep the representation synchronized.
-In EMF, for instance, the patch is interpreted as a set of changes that impact a model conforming to an Ecore metamodel, while in Rascal it is interpreted as a set of changes that impact an ADT value.
+In EMF, for instance, the patch is interpreted as a set of changes that impact a model conforming to an Ecore metamodel, while in Rascal the interpreted changes impact an ADT value.
 
 As mentioned earlier, each LV may want to preserve extra shape-specific information across the patches.
 A textual editor in Rascal, for instance, needs to keep some of the parsing information to maintain layout whenever patches are applied.
