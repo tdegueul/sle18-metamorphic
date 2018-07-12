@@ -36,7 +36,7 @@ In EMF, for instance, the patch is interpreted as a set of changes that impact a
 As mentioned earlier, each LV may want to preserve extra shape-specific information across the patches.
 A textual editor in Rascal, for instance, needs to keep some of the parsing information to maintain layout whenever patches are applied.
 So it should be possible to apply the patch while maintaining the extra information specific to a given LV.
-Intuitively, our approach supposes that all the information that does not directly relate to the constructs of a language is ``extra'' and therefore should not be part of the patch itself.
+Intuitively, our approach supposes that all the information that does not directly relate to the constructs of a language is ``extra'' and should not be part of the patch itself.
 Sharing extra-information from one shape to the other might be desirable, for instance to share layout information between textual editors.
 We discuss this point further in \Cref{sec:discussion}.
 %Automatically generating language implementations in different LV is beyond the scope of this paper.
