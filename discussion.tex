@@ -11,13 +11,14 @@ Although the closed-world assumption eases the definition of a common patch form
 In our evaluation (\Cref{sec:eval}), we handcrafted every shape of the FSM language in Rascal, EMF, and Java.
 It may however be possible to automatically generate shapes of a language, either from a common language definition or from a shape to another.
 For instance, researchers have studied the generation of fluent APIs from BNF-like grammar definitions~\cite{nakamaru2017silverchain}.
-Although automatic shape generation is not necessary for shape-diverse DSLs, future research in this area would greatly ease their adoption.
+Automatic generation of shapes is not necessary for shape-diverse DSLs, but future research in this area would greatly ease their adoption.
 
 \paragraph{Patch formalism}
 In \prism, we opted for patches in the form of edit scripts~\cite{rozen2017towards} and were successfully able to bridge three distinct LVs relying on radically different theories.
-We cannot conclude however that the information contained in such patches is sufficient; depending on the abstract syntax formalism used by a given LV, the information that the patch should carry may vary.
-Following the open-world assumption especially, this raises a number of problem regarding the evolution of patches when new LVs are connected to the communication bus.
-Furthermore, if extra-information such as layout information has to be shared amongst various LVs, the patch formalism should be adapted accordingly.
+We cannot conclude however that the information contained in such patches is sufficient for any kind of abstract syntax formalism.
+In an open world especially, connecting new LVs raises the problem of patch evolution.
+In addition, if extra information (\eg~textual layout) has to be shared amongst various LVs, the patch formalism should be adapted accordingly. % to carry this information.
+Patches are nonetheless central to our vision, as most other approaches (\eg~change propagation~\cite{DBLP:conf/etaps/SemerathDHV16}) assume the existence of an underlying model that is not materialized in our case.
 
 \paragraph{Towards collaborative modeling}
 As mentioned in \Cref{sec:prism}, \prism does not account for concurrent edits of different incarnations of the same model.
