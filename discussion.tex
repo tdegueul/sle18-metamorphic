@@ -9,28 +9,28 @@ Although the closed-world assumption eases the definition of a common patch form
 
 \paragraph{Automatic shape generation}
 In our evaluation (\Cref{sec:eval}), we handcrafted every shape of the FSM language in Rascal, EMF, and Java.
-It may however be possible to automatically generate shapes of a language, either from a common language definition or from a shape to another.
+It may, however, be possible to automatically generate shapes of a language, either from a common language definition or from a shape to another.
 For instance, researchers have studied the generation of fluent APIs from BNF-like grammar definitions~\cite{nakamaru2017silverchain}.
-Automatic generation of shapes is not necessary for shape-diverse DSLs, but future research in this area would greatly ease their adoption.
+Automatic generation of shapes is not necessary for shape-diverse DSLs, but future research in this area would significantly ease their adoption.
 
 \paragraph{Patch formalism}
 In \prism, we opted for patches in the form of edit scripts~\cite{rozen2017towards} and were successfully able to bridge three distinct LVs relying on radically different theories.
-We cannot conclude however that the information contained in such patches is sufficient for any kind of abstract syntax formalism.
+We cannot conclude however that the information contained in such patches is sufficient for any abstract syntax formalism.
 In an open world especially, connecting new LVs raises the problem of patch evolution.
-In addition, if extra information (\eg~textual layout) has to be shared amongst various LVs, the patch formalism should be adapted accordingly. % to carry this information.
+Also, if extra information (\eg~textual layout) has to be shared amongst various LVs, the patch formalism should be adapted accordingly. % to carry this information.
 Patches are nonetheless central to our vision, as most other approaches (\eg~change propagation~\cite{DBLP:conf/etaps/SemerathDHV16}) assume the existence of an underlying model that is not materialized in our case.
 
 \paragraph{Towards collaborative modeling}
 As mentioned in \Cref{sec:prism}, \prism does not account for concurrent edits of different incarnations of the same model.
 It does not account either for a possible distribution of the shapes and incarnations on the network, or the possibility of conflicts.
 Nonetheless, we believe that the idea of exchanging patches would be a good fit for advanced scenarios such as collaborative and distributed editing of models by different stakeholders under different shapes.
-A key step towards this direction would be to improve the dispatch mechanism accordingly.
+A crucial step towards this direction would be to improve the dispatch mechanism accordingly.
 
 \paragraph{Challenges of internal DSLs}
 We encountered a number of challenges when engineering the Java shape of our DSL (\Cref{sec:eval}).
-These are mainly due to the fact that the domain-specific static semantics is lost when manipulating Java ASTs using domain-agnostic Java tooling.
+These are mainly because domain-specific static semantics is lost when manipulating Java ASTs using domain-agnostic Java tooling.
 Besides, it may be hard to statically analyze the Java code manipulating models to account for reflexivity, string manipulation, or use of variables.
-Future work must investigate what are the limits imposed by internal DSLs in this context, especially regarding the absence of domain-specific static semantics.
+Future work must investigate what the limits imposed by internal DSLs in this context, especially regarding the absence of domain-specific static semantics, are.
 
 
 \paragraph{Towards metamorphic DSLs}
@@ -40,4 +40,4 @@ How self-adaptability of languages could be brought to life remains an open ques
 
 \vspace{1em}
 In this paper, with the objective of providing more flexibility to DSL designers and users, we have stressed the importance of shape-diverse DSLs and have proposed a first prototype approach, \prism, towards this vision.
-We hope that our initial contribution will raise the awareness of the community regarding these notions, and that the challenges we identify encourage future research.
+We hope that our initial contribution will raise the awareness of the community regarding these notions and that the challenges we identify encourage future research.

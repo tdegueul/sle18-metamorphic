@@ -2,7 +2,7 @@
 Domain-Specific Languages (DSLs) manifest themselves in remarkably diverse shapes, ranging from internal DSLs embedded as a mere fluent API within a programming language, to external DSLs with dedicated syntax and tool support.
 % engineered using one of many language workbenches.
 %
-Although different shapes have different pros and cons, combining them for a single language is problematic:~language designers usually commit to a particular shape early in the design process and it is hard to reconsider this choice later on.
+Although different shapes have different pros and cons, combining them for a single language is problematic:~language designers usually commit to a particular shape early in the design process, and it is hard to reconsider this choice later on.
 %
 %Theoretically, this diversity should enable language designers to combine the strengths of multiple language engineering technologies in the development of a single DSL and enable language users to manipulate their abstractions in the most appropriate shape for the task at hand (\eg~domain modeling vs. system integration).
 %In practice, however, combining multiple language implementation techniques is problematic.
@@ -18,6 +18,6 @@ We illustrate its applicability in the engineering of a simple shape-diverse DSL
 %Taking as an example a simple metamorphic FSM language implemented simultaneously in three technological spaces (Rascal, EMF, a fluent API in Java), we show how the same FSM models can be manipulated indifferently under various shapes (a textual program in Rascal, a graphical projection in EMF, a Java AST).
 %This opens up the possibility to, \eg animate an FSM model in EMF while it is executed by an interpreter written in Rascal.
 %
-We hope that our initial contribution will raise the awareness of the community regarding these notions, and that the challenges we identify encourage future research.
+We hope that our initial contribution will raise the awareness of the community regarding these notions and that the challenges we identify encourage future research.
 %We intend to raise the awareness of the community on these notions, identify some of the challenges we encountered along the way, and encourage future investigations.
 \end{abstract}
