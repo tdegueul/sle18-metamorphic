@@ -7,8 +7,11 @@ The corresponding incarnations are those given in \Cref{fig:motivating-fsm}.
 
 \begin{figure}[bt]
 	\centering
-	\begin{subfigure}[b]{.3\columnwidth}
-		\begin{lstlisting}[label=lst:fsm-adt, language=Rascal, numbers=none, xleftmargin=0pt, tabsize=1]
+	\begin{subfigure}[t]{.3\columnwidth}
+		\vskip 0pt
+		\begin{lstlisting}[label=lst:fsm-adt, language=Rascal, numbers=none, xleftmargin=0pt, tabsize=1, aboveskip=0pt, belowskip=0pt, abovecaptionskip=0pt, showlines=true]
+
+
 data Machine(Id uid) =
 	Machine(str name,
 		list[State] states,
@@ -21,20 +24,25 @@ data State(Id uid) =
 data Trans(Id uid) =
 	Trans(str event,
 		Ref[State] target);
+
+
 		\end{lstlisting}
 		\caption{Rascal ADT}
 	\end{subfigure}
 	\vrule
 	\enskip
-	\begin{subfigure}[b]{.26\columnwidth}
+	\begin{subfigure}[t]{.26\columnwidth}
+		\vskip 5pt
 		\includegraphics[width=\textwidth]{figures/fsm-mm}
+		\vskip 4pt
 		\caption{Ecore MM}
 	\end{subfigure}
 	\enskip
 	\vrule
 	\enskip
-	\begin{subfigure}[b]{.35\columnwidth}
-		\begin{lstlisting}[label=lst:fsm-api, language=Java, numbers=none, xleftmargin=0pt, tabsize=1]
+	\begin{subfigure}[t]{.35\columnwidth}
+		\vskip 0pt
+		\begin{lstlisting}[label=lst:fsm-api, language=Java, numbers=none, xleftmargin=0pt, tabsize=1, aboveskip=0pt, belowskip=0pt, abovecaptionskip=0pt]
 class Fsm {
 	Fsm(String name);
 	State init(String name);
