@@ -17,7 +17,7 @@ Automatic generation of shapes is not necessary for shape-diverse DSLs, but futu
 In \prism, we opted for patches in the form of edit scripts~\cite{rozen2017towards} and were successfully able to bridge three distinct LVs relying on radically different theories.
 We cannot conclude however that the information contained in such patches is sufficient for any abstract syntax formalism.
 In an open world especially, connecting new LVs raises the problem of patch evolution.
-Also, if extra information (\eg~textual layout) has to be shared amongst various LVs, the patch formalism should be adapted accordingly. % to carry this information.
+Also, if extra information (\eg~textual layout) must be shared amongst various LVs, the patch formalism should be adapted accordingly. % to carry this information.
 Patches are nonetheless central to our vision, as most other approaches (\eg~change propagation~\cite{DBLP:conf/etaps/SemerathDHV16}) assume the existence of an underlying model that is not materialized in our case.
 
 \paragraph{Towards collaborative modeling}
@@ -30,7 +30,7 @@ A crucial step towards this direction would be to improve the dispatch mechanism
 We encountered a number of challenges when engineering the Java shape of our DSL (\Cref{sec:eval}).
 These are mainly because domain-specific static semantics is lost when manipulating Java ASTs using domain-agnostic Java tooling.
 Besides, it may be hard to statically analyze the Java code manipulating models to account for reflexivity, string manipulation, or use of variables.
-Future work must investigate what the limits imposed by internal DSLs in this context, especially regarding the absence of domain-specific static semantics, are.
+Future work must investigate what the limits imposed by internal DSLs in this context are, especially regarding the absence of domain-specific static semantics.
 
 
 \paragraph{Towards metamorphic DSLs}
