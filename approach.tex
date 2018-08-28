@@ -64,18 +64,17 @@ Our current implementation of the dispatch mechanism is kept simple, and we leav
 
 %\td{Highlight incrementality, \ie~we're not Xtext, $\neq$ full de-/re-serialization}
 
-\begin{lstlisting}[label=lst:delta-adt, caption={CRUD-like patch definition in Rascal.}, language=Rascal, float=tb, numbersep=5pt, xleftmargin=10pt, aboveskip=0pt, belowskip=0pt]
+\begin{lstlisting}[label=lst:delta-adt, caption={CRUD-like patch definition in Rascal.}, language=Rascal, float=tb, numbers=none, xleftmargin=4pt, aboveskip=0pt, belowskip=0pt, belowcaptionskip=0pt, frame=single, linewidth=.81\columnwidth]
 @doc{A patch consists of a sequence of edits}
 alias Patch = tuple[Id root, Edits edits];
 
 @doc{Edits are operations attached to object identities}
 alias Edits = lrel[Id obj, Edit edit];
 
-data Edit
-  = put(str field, value val)
-  | unset(str field)
-  | ins(str field, int pos, value val)
-  | del(str field, int pos)
-  | create(str class) 
-  | destroy();
+data Edit = put(str field, value val)
+          | unset(str field)
+          | ins(str field, int pos, value val)
+          | del(str field, int pos)
+          | create(str class) 
+          | destroy();
 \end{lstlisting}
