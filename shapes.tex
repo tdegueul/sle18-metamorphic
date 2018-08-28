@@ -35,9 +35,9 @@ As the same model is incarnated many times, each of its incarnations $\mathcal{I
 This synchronization mechanism must ensure three essential properties.
 %First, it must not close the world around a chosen set of LVs:~it should be possible to easily connect new LVs and shapes to meet new requirements from users and designers.
 %This rules out any synchronization approach that would require to be defined for every pair $\langle LV, LV' \rangle$, such as bidirectional transformations.
-First, it should be efficient.
-This rules out any synchronization mechanism that would require to do a full traversal or to serialize and deserialize the incarnations after every change.
-Second, it must account for any extra shape-specific information the various LVs have to maintain to function properly.
-Examples of such extra information include layout information in a textual or graphical editor, or runtime state in a simulation environment.
+First, it must be efficient.
+This rules out any synchronization mechanism that would require a full traversal or full (de)serialization of the incarnations after every update.
+%to do a full traversal or to serialize and deserialize the incarnations after every change.
+Second, it must account for any extra shape-specific information the various LVs have to maintain to function properly, such as layout information in a textual or graphical editor, or runtime state in a simulation environment.
 The synchronization mechanism must thus isolate the information that relates to the model itself from the information that is specific to a particular shape.
-Third, the synchronization mechanism must be language-agnostic, meaning it should not have to be implemented from scratch for every shape-diverse DSL.
+Third, the synchronization mechanism must be language-agnostic, meaning it should not have to be re-implemented for every shape-diverse DSL.

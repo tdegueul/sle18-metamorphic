@@ -1,6 +1,6 @@
 \section{Open Questions \& Next Steps}
 \label{sec:discussion}
-Based on our early experiments, we now list in this section some open questions, as well as possible next research steps in this direction.
+We now list in this section some open questions, as well as possible next research steps in this direction.
 
 \paragraph{Closed-world vs. Open-world}
 Implementers of a synchronization mechanism for shape-diverse DSLs may opt for the closed-world or open-world assumption.
@@ -32,12 +32,10 @@ These are mainly because domain-specific static semantics is lost when manipulat
 Besides, it may be hard to statically analyze the Java code manipulating models to account for reflexivity, string manipulation, or use of variables.
 Future work must investigate what the limits imposed by internal DSLs in this context are, especially regarding the absence of domain-specific static semantics.
 
-
 \paragraph{Towards metamorphic DSLs}
 We view this initial contribution as a first step towards \emph{metamorphic DSLs}~\cite{acher2014metamorphic}.
 Beyond the ideas presented in this paper, the notion of metamorphic DSL envisions self-adaptable languages that automatically adapt their shapes and the associated IDE according to a particular usage or task.
 How self-adaptability of languages could be brought to life remains an open question.
 
-\vspace{1em}
 In this paper, with the objective of providing more flexibility to DSL designers and users, we have stressed the importance of shape-diverse DSLs and have proposed a first prototype approach, \prism, towards this vision.
 We hope that our initial contribution will raise the awareness of the community regarding these notions and that the challenges we identify encourage future research.
