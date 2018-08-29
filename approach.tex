@@ -64,7 +64,7 @@ Our current implementation of the dispatch mechanism is kept simple, and we leav
 
 %\td{Highlight incrementality, \ie~we're not Xtext, $\neq$ full de-/re-serialization}
 
-\begin{lstlisting}[label=lst:delta-adt, caption={CRUD-like patch definition in Rascal.}, language=Rascal, float=tb, numbers=none, xleftmargin=4pt, aboveskip=0pt, belowskip=0pt, belowcaptionskip=0pt, frame=single, linewidth=.81\columnwidth]
+\begin{lstlisting}[label=lst:delta-adt, caption={CRUD-like patch definition in Rascal.}, language=Rascal, float=tb, numbers=none, xleftmargin=.1\columnwidth, xrightmargin=.1\columnwidth, aboveskip=0pt, belowskip=0pt]
 @doc{A patch consists of a sequence of edits}
 alias Patch = tuple[Id root, Edits edits];
 
