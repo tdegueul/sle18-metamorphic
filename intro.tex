@@ -3,14 +3,14 @@ One of the first steps in designing a new Domain-Specific Language (DSL) is to c
 We define a LV as the technological means for implementing a language.
 This includes language workbenches as well as programming languages and ontology languages, to name a few.
 %A language vehicle may pertain to any \emph{technological space} (TS) such as grammarware, modelware, PLware, \etc.
-The notion of language vehicle is orthogonal to the distinction between technological spaces (\eg~grammarware, modelware~\cite{kurtev2002technological}); between graphical and textual syntax; between internal, embedded, and external DSLs,~\etc.
+The notion of language vehicle is orthogonal to the distinction between technological spaces (\eg~grammarware, modelware~\cite{kurtev2002technological}); between graphical and textual syntax; between internal, embedded, and external DSLs.
 %\footnote{In this paper, we build upon \citeauthor{kurtev2002technological}'s view of a TS:~``a working context with a set of associated concepts, body of knowledge, tools, required skills, and possibilities''~\cite{kurtev2002technological}.}
 %In addition, we consider a cohesive set of tools in a given TS (\eg~a particular language workbench) as a separate TS.
 For instance, we consider Rascal~\cite{klint2010easy} and Spoofax~\cite{kats2010spoofax} as two distinct language vehicles within the broader technological space of grammarware and meta-programming; EMF~\cite{steinberg2008emf} and UML~\cite{fowler2004uml} (using Profiles~\cite{selic2007systematic}) as two distinct language vehicles within the broader technological space of modelware.
 LVs usually come with their own meta-languages for expressing the various aspects of a DSL:~abstract syntax, concrete syntax, static and execution semantics, tools, \etc.
 %Examples of prominent LV include meta-modeling environments such as EMF~\cite{steinberg2008emf}, meta-programming environments such as Rascal~\cite{klint2010easy} and Spoofax~\cite{kats2010spoofax}, projectional environments such as MPS~\cite{voelter2013language}, plain old programming languages such as Racket~\cite{felleisen2018programmable} or Scala~\cite{hofer2010modular}, and language workbenches (LWBs) in general~\cite{erdweg2015evaluating}.
 %\td{Sentence above could be shortened/removed}
-As implementation techniques radically differ from one LV to another, this initial design choice commits the development of a DSL in a set direction that can hardly be reconsidered later.
+As implementation techniques differ radically from one LV to another, this initial design choice commits the development of a DSL in a set direction that can hardly be reconsidered later.
 
 From the language designer's point of view, however, every LV has its own strengths.
 The ecosystem around EMF excels in the definition of user-friendly editors and persistence frameworks for large models, while the Rascal environment excels in the definition of interpreters and refactoring tools.

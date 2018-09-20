@@ -28,7 +28,7 @@ To ensure that every LV can apply the operations on the right elements, identiti
 %The communication bus then ships this patch to all the other LVs that hold an alternative incarnation of this model.
 % (aka. \de or edit script~\cite{rozen2017towards}), that stores the changes on the model that have been realized on this LV.
 
-Every LV then interprets the patch in its own way to keep the representation synchronized.
+Every LV then interprets the patch in its own way to keep its incarnations synchronized.
 In EMF, for instance, the patch is interpreted as a set of changes that impact a model conforming to an Ecore metamodel, while in Rascal it is interpreted as a set of changes that impact an ADT value.
 
 As mentioned earlier, each LV may want to preserve extra shape-specific information across the patches.
@@ -59,7 +59,7 @@ When receiving a patch, \prism looks up its internal matrix to determine which o
 The patch is then copied and routed accordingly.
 %The lookup is implemented by a matrix internal to \prism linking models to their incarnations. This matrix is kept updated by connected LVs declaring which incarnations of which model they manage.
 %\prism addresses the synchronization of different incarnations of same models that is a complementary problem of the collaborative edition.
-Our current implementation of the dispatch mechanism is kept simple, and we leave for future work the support of concurrent edits on different incarnations of the same model. This would scale \prism to advanced scenarios that go beyond the scope of this paper, such as collaborative editing.
+Our current implementation of the dispatch mechanism is kept simple, and we leave for future work the support of concurrent edits on different incarnations of the same model. This will allow \prism to scale to advanced scenarios that go beyond the scope of this paper, such as collaborative editing.
 %Our approach only deals with sequential edition of incarnations and thus complementary work on concurrency in our dispatch mechanism could allow collaborative edition scenarios.
 
 %\td{Highlight incrementality, \ie~we're not Xtext, $\neq$ full de-/re-serialization}
