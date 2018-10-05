@@ -30,16 +30,16 @@
    inkscape:pageopacity="0"
    inkscape:pageshadow="2"
    inkscape:window-width="1920"
-   inkscape:window-height="1016"
+   inkscape:window-height="1163"
    id="namedview805"
    showgrid="false"
    inkscape:zoom="0.5946522"
-   inkscape:cx="348.78719"
-   inkscape:cy="584.47905"
-   inkscape:window-x="0"
-   inkscape:window-y="27"
+   inkscape:cx="4.0478617"
+   inkscape:cy="577.75243"
+   inkscape:window-x="1920"
+   inkscape:window-y="0"
    inkscape:window-maximized="1"
-   inkscape:current-layer="svg803"
+   inkscape:current-layer="g535"
    fit-margin-top="0"
    fit-margin-left="0"
    fit-margin-right="0"
@@ -840,6 +840,7 @@
 
 
 
+
        </g>
       </g><g
    id="g349"
@@ -1421,13 +1422,15 @@
 
 
 
+
        </g>
       </g><g
    id="g535"
    class="com.sun.star.drawing.TextShape"
    transform="translate(2931.6664,-5047)">
        <g
-   id="id14">
+   id="id14"
+   transform="matrix(1.4251873,0,0,1.4251873,-2865.3778,-4320.5241)">
         <rect
    style="fill:none;stroke:none"
    id="rect524"
@@ -1451,6 +1454,7 @@
        class="TextPosition"><tspan
          style="fill:#808080;stroke:none"
          id="tspan526">Projection</tspan></tspan></tspan></text>
+
 
 
 
@@ -1554,6 +1558,7 @@
 
 
 
+
 <g
    id="g587"
    class="com.sun.star.drawing.TextShape"
@@ -1581,6 +1586,7 @@
        x="13162"
        class="TextPosition"
        style="font-size:987.77778173px;fill:#000000;stroke:none;-inkscape-font-specification:'Liberation Sans, sans-serif, Normal';font-family:'Liberation Sans', sans-serif;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal">3: Apply Patch</tspan></tspan></text>
+
 
 
 
@@ -1800,6 +1806,7 @@
        x="14162"
        class="TextPosition"
        style="font-size:987.77778173px;fill:#000000;stroke:none;-inkscape-font-specification:'Liberation Sans, sans-serif';font-family:'Liberation Sans', sans-serif;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal">3: Apply Patch</tspan></tspan></text>
+
 
 
 
@@ -2041,6 +2048,7 @@
 
 
 
+
        </g>
       </g><g
    id="g784"
@@ -2244,6 +2252,7 @@
      x="4586.3052"
      y="2321.8777"
      style="font-size:987.777771px;stroke-width:746.70709229">Model</tspan></text>
+
 
 
 
