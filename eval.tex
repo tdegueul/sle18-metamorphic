@@ -81,7 +81,7 @@ We build the Java API following a simple systematic convention, so as to easily 
 %By using an editor, we were able to benefit of the result of the tooling in others incarnations, i.e., using the content assist of Java is also updating other editors.
 %We also observe some de-synchronization happening due to the partially unaligned FSM implementation in Java.
 
-While the Rascal and EMF shapes synchronize seamlessly, we noticed a number of challenges with the Java API.
+Using \prism, the Rascal and EMF shapes synchronize seamlessly, but we noticed a number of challenges with the Java API.
 As the Java API inherits the (domain-agnostic) tooling of Java itself, it lacks the domain knowledge necessary to always generate correct patches.
 Due to the lack of domain-specific static semantics, a well-formed Java program may indeed produce an ill-formed FSM that cannot be interpreted by the other shapes.
 Besides, our prototype implementation does not account for complex string manipulation when invoking the API or use of variables.
