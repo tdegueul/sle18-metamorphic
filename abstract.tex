@@ -1,5 +1,5 @@
 \begin{abstract}
-Domain-Specific Languages (DSLs) manifest themselves in remarkably diverse shapes, ranging from internal DSLs embedded as a mere fluent API within a programming language, to external DSLs with dedicated syntax and tool support.
+Domain-Specific Languages (DSLs) manifest themselves in remarkably diverse shapes, ranging from internal DSLs embedded within a programming language, to external DSLs with dedicated syntax and tool support.
 % engineered using one of many language workbenches.
 %
 Although different shapes have different pros and cons, combining them for a single language is problematic:~language designers usually commit to a particular shape early in the design process, and it is hard to reconsider this choice later.
@@ -12,8 +12,8 @@ In this \emph{new ideas} paper, we envision a language engineering approach enab
 %support of multiple shapes for a single DSL to better fit the various tasks to be performed with it. \td{Meh}
 %report on early experiments and lessons learned building an incremental synchronization mechanism for \emph{metamorphic DSLs}.
 %
-We report on early experiments and lessons learned building \prism, our prototype approach to this problem.
-We illustrate its applicability in the engineering of a simple shape-diverse DSL implemented conjointly in Rascal, EMF, and Java.
+We report on early experiments and lessons learned building \prism, our approach to this problem.
+We illustrate its applicability in the engineering of a shape-diverse DSL implemented in Rascal, EMF, and Java.
 %Metamorphic DSLs are languages whose different constituents (syntax, semantics, tools) can be implemented using various language engineering technologies and which can adapt their shape to a particular user or task.
 %Taking as an example a simple metamorphic FSM language implemented simultaneously in three technological spaces (Rascal, EMF, a fluent API in Java), we show how the same FSM models can be manipulated indifferently under various shapes (a textual program in Rascal, a graphical projection in EMF, a Java AST).
 %This opens up the possibility to, \eg animate an FSM model in EMF while it is executed by an interpreter written in Rascal.
